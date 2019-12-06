@@ -1,1 +1,42 @@
-<p>home works!</p>
+<section class="content-header">
+    <h1 class="text-dark">{{"Label_About"}}
+      <div class="head_button">
+  
+      </div>
+    </h1>
+  
+  </section>
+  <section class="content container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-xl-8 padLR_8">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title mb-2">
+              {{"Label_About" }}
+  
+            </h3>
+          </div>
+          <div style="padding:10px 5px" class="box-body card-no-border f15">
+            <div class="col-md-12">
+              <label><strong>{{"Label_About_Application_Version"}}</strong></label> {{appVersion}}
+            </div>
+            <div class="col-md-12">
+              <label><strong>{{"Label_About_Client_Version"}}</strong></label> {{clientVersion}}
+            </div>
+            <div class="col-md-12 mt-10 mb-10">
+              {{"Label_AboutDMS" }}
+  
+  
+            </div>
+            <div class="col-md-12">            
+              <div *ngIf="!(region == 'US')"><img width="70px" height="70px" src="./../../../assets/images/CE_Mark.png"><div class="clearfix"></div></div>
+              <strong>{{FGNumber}}</strong>
+              <div class="clearfix"></div>
+              <strong>{{UDINumber}}</strong>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

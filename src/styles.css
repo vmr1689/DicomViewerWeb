@@ -12,10 +12,23 @@
 
 /* a { cursor: pointer } */
 
-body {
+/* body {
     background-color: black !important;
+} */
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url(./assets/fonts/OpenSans-Regular.ttf);
 }
 
+
+
+body,
+html {
+    font-family: 'Open Sans';;
+    color: #fff;
+    background-color: #27272b;
+}
 
 
 

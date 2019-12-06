@@ -1,78 +1,43 @@
 <div style="position: absolute;width:100%">
     <div class="login-box" style="border-top:3px solid #2467CB !important">
-        
         <div class="login-box-body">
-            
             <div class="login-logo">
                 <a href="#"><span class="logo-lg">Dicom Viewer</span></a>
             </div>
             <p class="login-box-msg">Sign in to start your session</p>
 
-  
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+                <div class="form-group has-feedback">
+                    <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group has-feedback">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
 
-        <div class="form-group has-feedback">
+                <div class="row">
+                    <div class="col-xs-8">
+                    </div>
+                    <div style="width: 50%;margin-left: 25%;">
+                        <button [disabled]="loading" class="btn btn-primary btn-block btn-flat">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Login
+                        </button>
+                    </div>
+                </div>
 
-          <input type="text" formControlName="username" class="form-control" placeholder="Username"
-
-                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-
-          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-
-            <div *ngIf="f.username.errors.required">Username is required</div></div>
-
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
         </div>
-
-        <div class="form-group has-feedback">
-
-          <input type="password" formControlName="password" class="form-control" placeholder="Password"
-
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-
-                        
-
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-
-            <div *ngIf="f.password.errors.required">Password is required</div>
-
-        </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-xs-8">
-
-            
-
-          </div>
-
-          <div style="width: 50%;margin-left: 25%;">
-
-                <button [disabled]="loading" class="btn btn-primary btn-block btn-flat">
-
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-
-                        Login
-
-                    </button>
-
-          </div>
-
-        </div>
-
-        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-
-      </form>
-        </div>
-
-
-
-
     </div>
 </div>
