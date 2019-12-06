@@ -1,25 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css";
-
-@import "../node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css";
-
-@import "../node_modules/admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
-
-@import "../node_modules/admin-lte/plugins/jqvmap/jqvmap.min.css";
-
+@import "../node_modules/admin-lte/bower_components/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/admin-lte/bower_components/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css";
 @import "../node_modules/admin-lte/dist/css/AdminLTE.min.css";
 
-@import "../node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
-
-@import "../node_modules/admin-lte/plugins/daterangepicker/daterangepicker.css";
-
-@import "../node_modules/admin-lte/plugins/summernote/summernote-bs4.css";
+/* Default skin */
+@import "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css";
 
 /* Default skin */
 
-a { cursor: pointer }
+/* a { cursor: pointer } */
 
 body {
     background-color: black !important;
 }
+
+
+
+
+

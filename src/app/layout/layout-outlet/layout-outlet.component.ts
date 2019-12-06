@@ -12,10 +12,10 @@ export class LayoutOutletComponent implements OnInit {
 
   ngOnInit() {
     debugger;
-    // $('body').layout('fix');
-    // const trees: any = $('[data-widget="tree"]');
-    // trees.tree();
-    // $('body').removeClass('login-page');
+    $('body').layout('fix');
+    const trees: any = $('[data-widget="tree"]');
+    trees.tree();
+    $('body').removeClass('login-page');
   }
 
   LogoutFunction() {

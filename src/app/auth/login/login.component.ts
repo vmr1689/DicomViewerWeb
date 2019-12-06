@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
+declare var $: any;
 import { AuthenticationService } from '../../shared/services';
 
 @Component({
@@ -30,6 +30,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // $('body').layout('fix');
+    // $('body').removeClass('hold-transition skin-blue sidebar-mini fixed login-page');
+    // $('body').removeClass('hold-transition skin-blue sidebar-mini fixed login-page');
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
