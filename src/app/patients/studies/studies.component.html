@@ -1,0 +1,29 @@
+<div >
+    <div >
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Accession</th>
+            <th>StudyDate</th>
+            <th>PatientName</th>
+            <th>PatientGender</th>
+            <th>StudyDescription</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let study of allStudies; let i = index">
+            <!-- <td> {{study.ID}} </td> -->
+            <td>{{study.MainDicomTags.AccessionNumber}}</td>
+            <td>{{study.MainDicomTags.StudyDate }} </td>
+            <td>{{study.PatientMainDicomTags.PatientName}}</td>
+            <td>{{study.PatientMainDicomTags.PatientSex}}</td>
+            <td>{{study.MainDicomTags.StudyDescription}}</td>
+            <td><a style="color: blue;"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

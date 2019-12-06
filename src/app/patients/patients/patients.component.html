@@ -1,0 +1,26 @@
+<div >
+    <div >
+      <table class="table .table-bordered table-hover">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>PatientName</th>
+            <th>PatientID</th>
+            <th>PatientGender</th>
+            <th>PatientBirthDate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of allPatients; let i = index">
+            <!-- <td> <a [routerLink]="['/studies']" [queryParams]="{ Id: patient.ID}">{{patient.ID}}</a>  </td> -->
+            <td><a [routerLink]="['/patients/studies']" [queryParams]="{ patientId: patient.ID}">{{patient.MainDicomTags.PatientName}}</a></td>
+            <td>{{patient.MainDicomTags.PatientID}}</td>
+            <td>{{patient.MainDicomTags.PatientSex}}</td>
+            <td>{{patient.MainDicomTags.PatientBirthDate}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

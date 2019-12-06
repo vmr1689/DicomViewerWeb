@@ -21,7 +21,10 @@
               </a>
               <ul class="treeview-menu">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a
-                    [routerLink]="['/test/test1']"><i class="fa fa-hand-o-right"></i><span>Patient</span></a>
+                    [routerLink]="['/patients']"><i class="fa fa-hand-o-right"></i><span>Patient</span></a>
+                  </li>
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a
+                    [routerLink]="['/patients/studies']"><i class="fa fa-hand-o-right"></i><span>Studies</span></a>
                   </li>
               </ul>
           </li>
