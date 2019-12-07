@@ -1,29 +1,45 @@
-<div >
-    <div >
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <!-- <th>ID</th> -->
-            <th>Accession</th>
-            <th>StudyDate</th>
-            <th>PatientName</th>
-            <th>PatientGender</th>
-            <th>StudyDescription</th>
-            <th>View</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let study of allStudies; let i = index">
-            <!-- <td> {{study.ID}} </td> -->
-            <td>{{study.MainDicomTags.AccessionNumber}}</td>
-            <td>{{study.MainDicomTags.StudyDate }} </td>
-            <td>{{study.PatientMainDicomTags.PatientName}}</td>
-            <td>{{study.PatientMainDicomTags.PatientSex}}</td>
-            <td>{{study.MainDicomTags.StudyDescription}}</td>
-            <td><a style="color: blue;"><i class="glyphicon glyphicon-eye-open"></i></a></td>
-          </tr>
-        </tbody>
-      </table>
+<section class="content container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-xl-8 padLR_8">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            {{"Studies"}}
+
+          </h3>
+        </div>
+        <div style="padding:10px 5px" class="box-body card-no-border f15">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="text-primary">
+                <tr>
+                  <!-- <th>ID</th> -->
+                  <th>Accession</th>
+                  <th>Study Date</th>
+                  <th>Patient Name</th>
+                  <th>Gender</th>
+                  <th>Study Description</th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let study of allStudies; let i = index">
+                  <!-- <td> {{study.ID}} </td> -->
+                  <td>{{study.MainDicomTags.AccessionNumber}}</td>
+                  <td>{{study.MainDicomTags.StudyDate }} </td>
+                  <td>{{study.PatientMainDicomTags.PatientName}}</td>
+                  <td>{{study.PatientMainDicomTags.PatientSex}}</td>
+                  <td>{{study.MainDicomTags.StudyDescription}}</td>
+                  <td><a style="color: blue;"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
+
+
 

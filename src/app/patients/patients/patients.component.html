@@ -1,26 +1,40 @@
-<div >
-    <div >
-      <table class="table .table-bordered table-hover">
-        <thead>
-          <tr>
-            <!-- <th>ID</th> -->
-            <th>PatientName</th>
-            <th>PatientID</th>
-            <th>PatientGender</th>
-            <th>PatientBirthDate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let patient of allPatients; let i = index">
-            <!-- <td> <a [routerLink]="['/studies']" [queryParams]="{ Id: patient.ID}">{{patient.ID}}</a>  </td> -->
-            <td><a [routerLink]="['/patients/studies']" [queryParams]="{ patientId: patient.ID}">{{patient.MainDicomTags.PatientName}}</a></td>
-            <td>{{patient.MainDicomTags.PatientID}}</td>
-            <td>{{patient.MainDicomTags.PatientSex}}</td>
-            <td>{{patient.MainDicomTags.PatientBirthDate}}</td>
-            
-          </tr>
-        </tbody>
-      </table>
+<section class="content container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-xl-8 padLR_8">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            {{"Patients"}}
+
+          </h3>
+        </div>
+        <div style="padding:10px 5px" class="box-body card-no-border f15">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="text-primary">
+                <tr>
+                  <!-- <th>ID</th> -->
+                  <th>Patient Name</th>
+                  <th>Patient ID</th>
+                  <th>Patient Gender</th>
+                  <th>Patient Birth Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let patient of allPatients; let i = index">
+                  <!-- <td> <a [routerLink]="['/studies']" [queryParams]="{ Id: patient.ID}">{{patient.ID}}</a>  </td> -->
+                  <td><a [routerLink]="['/patients/studies']"
+                      [queryParams]="{ patientId: patient.ID}">{{patient.MainDicomTags.PatientName}}</a></td>
+                  <td>{{patient.MainDicomTags.PatientID}}</td>
+                  <td>{{patient.MainDicomTags.PatientSex}}</td>
+                  <td>{{patient.MainDicomTags.PatientBirthDate}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
+</section>

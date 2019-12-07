@@ -8,28 +8,25 @@
 /* Default skin */
 @import "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css";
 
+
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons");
 /* Default skin */
 
-/* a { cursor: pointer } */
-
-/* body {
-    background-color: black !important;
-} */
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url(./assets/fonts/OpenSans-Regular.ttf);
-}
-
-
+a { cursor: pointer } 
 
 body,
 html {
-    font-family: 'Open Sans';;
     color: #fff;
     background-color: #27272b;
 }
 
+th {
+    border-top: 0;
+    color: lightskyblue !important;
+}
+
+tr:hover {background-color: #666 !important;}
 
 
 
