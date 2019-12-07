@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-declare var $: any;
 import { AuthenticationService } from '../../shared/services';
+import { SpinnerService } from '../../shared/utilities';
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private spinnerService: SpinnerService,
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -54,7 +56,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    this.spinnerService.show();
     this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
@@ -65,6 +67,8 @@ export class LoginComponent implements OnInit {
         error => {
           this.error = error;
           this.loading = false;
+        }).add(() => {
+          this.spinnerService.hide();
         });
   }
 }
