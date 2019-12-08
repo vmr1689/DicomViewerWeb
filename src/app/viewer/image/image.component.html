@@ -1,0 +1,168 @@
+<div class="wrapper">
+    <header class="main-header">
+        <a href="index2.html" class="logo">
+            <span class="logo-mini"><b>HL</b>C</span>
+            <span class="logo-lg"><i class="fa fa-heartbeat logo_icon"></i><b>E-Health</b>Care</span>
+        </a>
+        <nav class="navbar navbar-static-top" style="background-color:#171819;">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown messages-menu">
+                        <a title="Windowing" href="" tabIndex="1" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa fa-adjust"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Window..</small></span>
+                        </a>
+
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Pan" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-hand-stop-o"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Pan</small></span>
+                        </a>
+
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Zoom" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-font"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Zoom</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-font"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Measure</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Rotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-rotate-right"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Rotate</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Magnifier" href="" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa fa-search-plus"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Magnif..</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Scroll" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-book"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Scroll</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Export" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-download"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Export</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Print" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-print"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Print</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Fullscreen" href="" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa fa-arrows-alt"></i>
+                            <span class="txt"><small>Fullsc..</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Reset" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-refresh"></i>
+                            <span class="txt"><small>Reset</small></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu thumbnails" data-widget="tree">
+                <li class="treeview">
+                    <a href="">
+                        <span class="txt_menu">{{imageStudy.patientName}}</span>
+                        <small class="txt_menu" style="display:block" *ngIf="imageStudy.studyDate">Study Date :
+                            <span>{{imageStudy.studyDate}}</span></small>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" *ngFor="let series of imageStudy.series; let i = index">
+                        <span class="sub_txt">
+                            <small><i class="fa fa-folder-open"></i>{{i+1}}/{{series.instancesCount}}</small>
+                            <small><i class="fa fa-text"></i>{{series.mainDicomTags.protocolName}}</small>
+                        </span>
+                        <li>
+                            <ul class="users-list clearfix">
+                                <li class="active_sub"
+                                    *ngFor="let instancesModel of series.instancesModel; let j = index">
+                                    <img src="{{instancesModel.instancePreview}}" alt="User Image"
+                                        (click)="renderImage(instancesModel.instanceId)">
+                                    <span class="users-list-date">{{j+1}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <section class="content pt_5">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <div class="box cust_box">
+                        <div class="box-header pad_0" style="position: relative;background: #171819;">
+                            <h3 class="box-title text-left">1 <br /> 1250 x 780<br /></h3>
+                            <div class="pull-right text-right">
+                                <small>Ananymized</small><br /><small>2019-03-18 14:12:47</small>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="box-body pad_0">
+                            <ul class="users-list clearfix w100per">
+                                <li style="min-height: 800px;">
+                                    <!-- <div id="dicomImageWrapper"
+                                        style="width: 300px;height: 300px;position:relative;background-color:black"
+                                        oncontextmenu="return false" onmousedown="return false">
+
+                                        <div id="{{'dicomImage_'+ image.name }}"
+                                            style="top:0px;left:0px;position:absolute">
+                                        </div>
+                                    </div> -->
+
+                                    <div id="dicomImage"
+                                        style="min-height: 720px;width:500px;padding-top:30px">
+                                    </div>
+
+                                    <!-- <img src="{{selectedInstanceModel.preview}}" alt="User Image"
+                                        style="min-height: 720px;width:500px;padding-top:30px"> -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="box-header pad_0" style="position: relative;background: #171819;">
+                            <h3 class="box-title text-left">1 <br /> 1250 x 780<br /></h3>
+                            <div class="pull-right text-right">
+                                <small>Ananymized</small><br /><small>2019-03-18 14:12:47</small>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+</div>

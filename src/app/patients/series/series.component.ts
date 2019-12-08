@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/shared/services';
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/utilities';
+import { SpinnerService } from '../../shared/utilities';
 
 @Component({
-  selector: 'app-studies',
-  templateUrl: './studies.component.html',
-  styleUrls: ['./studies.component.css']
+  selector: 'app-series',
+  templateUrl: './series.component.html',
+  styleUrls: ['./series.component.css']
 })
-export class StudiesComponent implements OnInit {
-  allStudies: any;
+export class SeriesComponent implements OnInit {
+  allSeries: any;
   inputParam: any;
 
   constructor(
@@ -20,22 +20,23 @@ export class StudiesComponent implements OnInit {
   ngOnInit() {
 
     this.route.queryParams.subscribe(params => {
-      this.inputParam = params['patientId'];
+      this.inputParam = params['studyId'];
       if (this.inputParam) {
         this.spinnerService.show();
-        this.patientsSvc.getStudies(this.inputParam).subscribe(data => {
-          this.allStudies = data;
+        this.patientsSvc.getSeries(this.inputParam).subscribe(data => {
+          this.allSeries = data;
         }).add(() => {
           this.spinnerService.hide();
         });
       } else {
         this.spinnerService.show();
-        this.patientsSvc.getAllStudies().subscribe(data => {
-          this.allStudies = data;
+        this.patientsSvc.getAllSeries().subscribe(data => {
+          this.allSeries = data;
         }).add(() => {
           this.spinnerService.hide();
         });
       }
     });
   }
+
 }

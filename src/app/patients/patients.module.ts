@@ -5,9 +5,10 @@ import { PatientsRoutingModule } from './patients-routing.module';
 
 import { PatientsComponent } from './patients/patients.component';
 import { StudiesComponent } from './studies/studies.component';
+import { SeriesComponent } from './series/series.component';
 
 @NgModule({
-  declarations: [ PatientsComponent, StudiesComponent],
+  declarations: [ PatientsComponent, StudiesComponent, SeriesComponent],
   imports: [
     CommonModule,
     PatientsRoutingModule

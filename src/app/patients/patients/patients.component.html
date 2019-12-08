@@ -24,10 +24,10 @@
                 <tr *ngFor="let patient of allPatients; let i = index">
                   <!-- <td> <a [routerLink]="['/studies']" [queryParams]="{ Id: patient.ID}">{{patient.ID}}</a>  </td> -->
                   <td><a [routerLink]="['/patients/studies']"
-                      [queryParams]="{ patientId: patient.ID}">{{patient.MainDicomTags.PatientName}}</a></td>
-                  <td>{{patient.MainDicomTags.PatientID}}</td>
-                  <td>{{patient.MainDicomTags.PatientSex}}</td>
-                  <td>{{patient.MainDicomTags.PatientBirthDate}}</td>
+                      [queryParams]="{ patientId: patient.id}">{{patient.mainDicomTags.patientName}}</a></td>
+                  <td>{{patient.mainDicomTags.patientID}}</td>
+                  <td>{{patient.mainDicomTags.patientSex}}</td>
+                  <td>{{patient.mainDicomTags.patientBirthDate}}</td>
 
                 </tr>
               </tbody>

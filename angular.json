@@ -33,7 +33,13 @@
               "node_modules/admin-lte/bower_components/fastclick/lib/fastclick.js",
               "node_modules/admin-lte/dist/js/adminlte.min.js",
               "node_modules/admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
-              "node_modules/admin-lte/dist/js/demo.js"
+              "node_modules/admin-lte/dist/js/demo.js",
+              "node_modules/cornerstone-core/dist/cornerstone.js",
+              "node_modules/cornerstone-math/dist/cornerstoneMath.js",
+              "node_modules/cornerstone-tools/dist/cornerstoneTools.js",
+              "node_modules/dicom-parser/dist/dicomParser.js",
+              "node_modules/cornerstone-web-image-loader/dist/cornerstoneWebImageLoader.js",
+              "src/assets/cornerstone/lib/cornerstoneWADOImageLoader.js"
             ]
           },
           "configurations": {

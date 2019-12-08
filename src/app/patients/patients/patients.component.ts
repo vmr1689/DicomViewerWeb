@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../shared/utilities';
 
 @Component({
   selector: 'app-patients',
@@ -11,19 +12,23 @@ export class PatientsComponent implements OnInit {
   loading = false;
   allPatients: any;
 
-  constructor(private patientsSvc: PatientsService,private router: Router,) { }
+  constructor(
+    private patientsSvc: PatientsService,
+    private router: Router,
+    private spinnerService: SpinnerService) { }
 
   ngOnInit() {
-      this.patientsSvc.getAllPatients().subscribe(data => {
-          console.log("All Patients Response", data);
-          this.allPatients = data;
-        });
+    this.spinnerService.show();
+    this.patientsSvc.getAllPatients().subscribe(data => {
+      this.allPatients = data;
+    }).add(() => {
+      this.spinnerService.hide();
+    });
   }
 
-  patientsClick(id:any){
-      debugger;
-
-      this.router.navigate(['/studies'], { queryParams: { id: id } });
+  patientsClick(id: any) {
+    this.router.navigate(['/studies'], { queryParams: { id } });
   }
-
 }
+
+

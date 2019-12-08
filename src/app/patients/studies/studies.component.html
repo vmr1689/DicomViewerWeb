@@ -25,12 +25,13 @@
               <tbody>
                 <tr *ngFor="let study of allStudies; let i = index">
                   <!-- <td> {{study.ID}} </td> -->
-                  <td>{{study.MainDicomTags.AccessionNumber}}</td>
-                  <td>{{study.MainDicomTags.StudyDate }} </td>
-                  <td>{{study.PatientMainDicomTags.PatientName}}</td>
-                  <td>{{study.PatientMainDicomTags.PatientSex}}</td>
-                  <td>{{study.MainDicomTags.StudyDescription}}</td>
-                  <td><a style="color: blue;"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                  <td>{{study.mainDicomTags.accessionNumber}}</td>
+                  <td>{{study.mainDicomTags.StudyDate }} </td>
+                  <td>{{study.patientMainDicomTags.patientName}}</td>
+                  <td>{{study.patientMainDicomTags.patientSex}}</td>
+                  <td>{{study.mainDicomTags.studyDescription}}</td>
+                  <td><a style="color: blue;" [routerLink]="['/image']"
+                    [queryParams]="{ studyId: study.id}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
                 </tr>
               </tbody>
             </table>

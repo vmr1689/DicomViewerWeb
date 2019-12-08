@@ -1,0 +1,53 @@
+<section class="content container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-xl-8 padLR_8">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">
+              {{"Series"}}
+            </h3>
+          </div>
+          <div style="padding:10px 5px" class="box-body card-no-border f15">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead class="text-primary">
+                  <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Protocol Name</th>
+                    <!-- <th>Status</th> -->
+                    <th>Body Part Examined Name</th>
+                    <th>Modality</th>
+                    <th>Performed Procedure Step Description</th>
+                    <th>Sequence Name</th>
+                    <!-- <th>Series Instance ID</th> -->
+                    <!-- <th>Series Number</th> -->
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let series of allSeries; let i = index">
+                    <!-- <td> {{study.id}} </td> -->
+                    <td>{{series.mainDicomTags.protocolName}}</td>
+                    <!-- <td>{{series.status }} </td> -->
+                    <td>{{series.mainDicomTags.bodyPartExamined}}</td>
+                    <td>{{series.mainDicomTags.modality}}</td>
+                    <td>{{series.mainDicomTags.performedProcedureStepDescription}}</td>
+                    <td>{{series.mainDicomTags.sequenceName}}</td>
+                    <!-- <td>{{series.mainDicomTags.seriesInstanceUID}}</td> -->
+                    <!-- <td>{{series.mainDicomTags.seriesNumber}}</td> -->
+
+                    <td><a style="color: blue;" [routerLink]="['/image']"
+                      [queryParams]="{ seriesId: series.id}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  

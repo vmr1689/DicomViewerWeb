@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { UtilityModule } from './shared/utilities';
 import { AuthModule } from './auth/auth.module';
 import { LayoutModule } from './layout/layout.module';
-
+import { ViewerModule } from './viewer/viewers.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
     UtilityModule.forRoot(),
     AuthModule,
     LayoutModule,
+    ViewerModule,
     AppRoutingModule
   ],
   providers: [],
