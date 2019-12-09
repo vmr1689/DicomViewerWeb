@@ -1,6 +1,0 @@
-{
-    "/instances": {
-      "target": "http://localhost:8042",
-      "secure": false
-    }
-  }

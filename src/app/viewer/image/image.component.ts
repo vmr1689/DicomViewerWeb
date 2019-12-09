@@ -35,9 +35,18 @@ export class ImageComponent implements OnInit {
 
     cornerstoneTools.external.Hammer = Hammer;
     cornerstoneTools.external.cornerstone = cornerstone;
-    cornerstoneWebImageLoader.external.cornerstone = cornerstone;
+    //cornerstoneWebImageLoader.external.cornerstone = cornerstone;
     cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
+
+    cornerstoneWADOImageLoader.configure({
+      beforeSend: function(xhr) {
+          // Add custom headers here (e.g. auth tokens)
+          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      }
+  });
+
+
     cornerstoneTools.init();
 
   }
@@ -74,6 +83,7 @@ export class ImageComponent implements OnInit {
     this.spinnerService.show();
     this.patientsSvc.GetInstanceById(this.selectedinstanceId).subscribe((data: any) => {
       this.selectedInstanceModel = data;
+      this.loadDiacomImages(this.selectedInstanceModel);
     }).add(() => {
       this.spinnerService.hide();
     });
@@ -82,7 +92,6 @@ export class ImageComponent implements OnInit {
   public initDiacomToolsForImages() {
     const that = this;
     let itemsProcessed = 0;
-    var aa = this.selectedInstanceModel;
 
     const imageId = 'dicomImage';
     const diacomImageElement = document.getElementById(imageId);
@@ -112,15 +121,13 @@ export class ImageComponent implements OnInit {
     const imageId = 'dicomImage';
     const diacomImageElement = document.getElementById(imageId);
     cornerstone.resize(diacomImageElement, true);
-
+    // diacomImageElement.style.minWidth = '530px';
+    // diacomImageElement.style.minHeight = '300px';
+    diacomImageElement.style.marginLeft = '500px';
 
     this.patientsSvc.GetInstancePreviewById(this.selectedinstanceId).subscribe((data: any) => {
-      debugger;
-      var aa = 'http://127.0.0.1:8042/instances/f2262561-bc5eb2aa-efb2b0f2-b76e5ae8-32257b60/preview';
-      // cornerstone.loadImage('https://rawgit.com/cornerstonejs/cornerstoneWebImageLoader/master/examples/Renal_Cell_Carcinoma.jpg').then(function (image) {
-      //   cornerstone.displayImage(diacomImageElement, image);
-      // });
-      cornerstone.loadImage(aa).then(function (image) {
+      const aa = 'wadouri:' + data.path;
+      cornerstone.loadImage(aa).then(function(image) {
         cornerstone.displayImage(diacomImageElement, image);
       });
     }).add(() => {
