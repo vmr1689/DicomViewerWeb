@@ -27,6 +27,8 @@ export class ImageComponent implements OnInit {
   imageStudy = {};
   selectedinstanceId = '';
   selectedInstanceModel = {};
+  selectedInstanceImg: any;
+  instancesTotlaCount: any;
 
   constructor(
     private patientsSvc: PatientsService,
@@ -65,6 +67,8 @@ export class ImageComponent implements OnInit {
         this.spinnerService.show();
         this.patientsSvc.GetImageStudyByStudyId(this.studyId).subscribe((data: ImageStudy) => {
           this.imageStudy = data;
+          this.selectedInstanceImg = data.series[0].instancesCount > 0 ? 1 : 0;
+          this.instancesTotlaCount = data.series[0].instancesCount;
           this.selectedinstanceId = data.series[0].firstInstanceId;
           this.selectedInstanceModel = data.series[0].firstInstanceModel;
           setTimeout(() => {
@@ -78,7 +82,12 @@ export class ImageComponent implements OnInit {
     });
   }
 
-  renderImage(instanceId: any) {
+  renderImage(instanceId: any,selectedInstanceImg:any,instancesCount:any) {
+    debugger;
+    cornerstone.reset(document.getElementById('dicomImage'));
+
+    this.selectedInstanceImg = selectedInstanceImg+1;
+    this.instancesTotlaCount = instancesCount;
     this.selectedinstanceId = instanceId;
     this.spinnerService.show();
     this.patientsSvc.GetInstanceById(this.selectedinstanceId).subscribe((data: any) => {
@@ -120,10 +129,12 @@ export class ImageComponent implements OnInit {
     const that = this;
     const imageId = 'dicomImage';
     const diacomImageElement = document.getElementById(imageId);
+
+
     cornerstone.resize(diacomImageElement, true);
-    // diacomImageElement.style.minWidth = '530px';
-    // diacomImageElement.style.minHeight = '300px';
-    diacomImageElement.style.marginLeft = '500px';
+    //diacomImageElement.style.width = '1720px';
+    //diacomImageElement.style.height = '350px';
+    //diacomImageElement.style.marginLeft = '500px';
 
     this.patientsSvc.GetInstancePreviewById(this.selectedinstanceId).subscribe((data: any) => {
       const aa = 'wadouri:' + data.path;
@@ -134,6 +145,51 @@ export class ImageComponent implements OnInit {
       this.spinnerService.hide();
     });
   }
+
+  public enableTools(tool: string, imageName: string, ) {
+    debugger;
+    // cornerstoneTools.setToolDisabled('Wwwc');
+    // cornerstoneTools.setToolDisabled('Zoom');
+    // cornerstoneTools.setToolDisabled('Pan');
+    // cornerstoneTools.setToolDisabled('Angle');
+    // cornerstoneTools.setToolDisabled('RectangleRoi');
+
+    if (tool === 'bright') {
+      cornerstoneTools.setToolActive('Wwwc', { mouseButtonMask: 1 });
+    }
+    if (tool === 'zoom') {
+      cornerstoneTools.setToolActive('Zoom', { mouseButtonMask: 1 });
+    }
+    if (tool === 'pan') {
+      cornerstoneTools.setToolActive('Pan', { mouseButtonMask: 1 });
+    }
+    if (tool === 'angle') {
+      cornerstoneTools.setToolActive('Angle', { mouseButtonMask: 1 });
+    }
+    if (tool === 'rectangleRoi') {
+      cornerstoneTools.setToolActive('RectangleRoi', { mouseButtonMask: 1 });
+    }
+    if (tool === 'invert') {
+      const imageId = 'dicomImage_' + imageName;
+      const diacomImageElement = document.getElementById(imageId);
+
+      const viewport = cornerstone.getViewport(diacomImageElement);
+      viewport.invert = !viewport.invert;
+      cornerstone.setViewport(diacomImageElement, viewport);
+    }
+    if (tool === 'magnify') {
+      cornerstoneTools.setToolActive('Magnify', { mouseButtonMask: 1 });
+    }
+    if (tool === 'text') {
+      cornerstoneTools.setToolActive('TextMarker', { mouseButtonMask: 1 });
+    }
+  }
+
+  viewDicomTags(){
+    debugger;
+    console.log("Instance",this.selectedinstanceId);
+  }
+  
 }
 
 
