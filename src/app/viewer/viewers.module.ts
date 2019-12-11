@@ -5,11 +5,14 @@ import { ViewersRoutingModule } from './viewers-routing.module';
 
 import { ImageComponent } from './image/image.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [ImageComponent],
   imports: [
     CommonModule,
-    ViewersRoutingModule
+    ViewersRoutingModule,
+    FormsModule
   ]
 })
 export class ViewerModule { }

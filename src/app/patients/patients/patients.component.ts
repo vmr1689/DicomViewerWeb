@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../shared/utilities';
+declare var $: any;
 
 @Component({
   selector: 'app-patients',
@@ -24,6 +25,8 @@ export class PatientsComponent implements OnInit {
     }).add(() => {
       this.spinnerService.hide();
     });
+    $('#dtBasicExample').DataTable();
+    $('.dataTables_length').addClass('bs-select');
   }
 
   patientsClick(id: any) {

@@ -60,4 +60,8 @@ export class PatientsService {
   GetInstancePreviewById(instanceId: any) {
     return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetInstanceById1/` + instanceId, this.httpOptions);
   }
+
+  GetDicomTagsById(instanceId: any) {
+    return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetDicomTagsById/` + instanceId, this.httpOptions);
+  }
 }

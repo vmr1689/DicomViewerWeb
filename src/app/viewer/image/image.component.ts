@@ -8,11 +8,11 @@ import * as cornerstoneTools from 'cornerstone-tools';
 import * as dicomParser from 'dicom-parser';
 import * as cornerstoneWebImageLoader from 'cornerstone-web-image-loader';
 
-import { PatientsService } from 'src/app/shared/services';
+import { PatientsService, EmailService } from 'src/app/shared/services';
 import { SpinnerService } from 'src/app/shared/utilities';
 
 import { ImageStudy, FirstInstanceModel } from '../../shared/models';
-
+import { NgForm } from '@angular/forms';
 declare var $: any;
 declare var cornerstoneWADOImageLoader: any;
 
@@ -29,12 +29,17 @@ export class ImageComponent implements OnInit {
   selectedInstanceModel = {};
   selectedInstanceImg: any;
   instancesTotlaCount: any;
+  listDicomTags: any[];
+  dicomTags: object;
+  currentURL='';
 
   constructor(
     private patientsSvc: PatientsService,
+    private emailSvc: EmailService,
     private route: ActivatedRoute,
     private spinnerService: SpinnerService) {
-
+      this.currentURL = window.location.href; 
+      console.log("Current URL",this.currentURL);
     cornerstoneTools.external.Hammer = Hammer;
     cornerstoneTools.external.cornerstone = cornerstone;
     //cornerstoneWebImageLoader.external.cornerstone = cornerstone;
@@ -188,6 +193,38 @@ export class ImageComponent implements OnInit {
   viewDicomTags(){
     debugger;
     console.log("Instance",this.selectedinstanceId);
+    this.spinnerService.show();
+    this.patientsSvc.GetDicomTagsById(this.selectedinstanceId).subscribe((data: any) => {
+      console.log("Dicom Tags",data);
+    //   let dicomTags = Object.keys(data);
+    //   let goodResponse = [];
+    //   for (let prop of dicomTags) { 
+    //     goodResponse.push(dicomTags[prop]);
+    // }
+    this.dicomTags = data;
+    }).add(() => {
+      this.spinnerService.hide();
+    });
+  }
+
+  sendEmail(form: NgForm) {
+    debugger;
+    this.spinnerService.show();
+    let emailModel = {
+      ToAddress: form.value.email,
+      Subject: form.value.subject,
+      BodyMessage: form.value.message + '<br/>' + this.currentURL
+    };
+
+    this.emailSvc.sendEmail(emailModel).subscribe((response: any) => {
+      if (response) {
+        $("#emailModal").modal('hide');
+        this.spinnerService.hide();
+      }
+      else {
+        this.spinnerService.hide();
+      }
+    });
   }
   
 }

@@ -96,14 +96,22 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#myModal" (click)="viewDicomTags()">
+                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#myModal"
+                            (click)="viewDicomTags()">
                             <i class="glyphicon glyphicon-tags"></i>
                             <span class="txt"><small>Dicom Tags</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#emailModal">
+                            <i class="fa fa-envelope"></i>
+                            <span class="txt"><small>Email</small></span>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
+        
     </header>
     <aside class="main-sidebar">
         <section class="sidebar">
@@ -205,23 +213,18 @@
             <table class="table table-bordered table-hover">
                 <thead class="text-primary">
                   <tr>
-                    <!-- <th>ID</th> -->
                     <th>Tag</th>
                     <th>Name</th>
                     <th>Value</th>
                   </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>0008,0005</td>
-                    <td>SpecificCharacterSet</td>
-                    <td>ISO_IR 100</td>
-                  </tr>
-                  <tr>
-                    <td>0008,0008</td>
-                    <td>ImageType</td>
-                    <td>ORIGINAL\PRIMARY\M\NORM\DIS2D</td>
-                  </tr>
+                    <tr *ngFor="let x of dicomTags | keyvalue">
+                        <td>{{x.key}}</td>
+                        <td>{{x.value.Name}}</td>
+                        <td>{{x.value.Value}}</td>
+                
+                    </tr>
                 </tbody>
               </table>
               </div>
@@ -234,6 +237,61 @@
       
     </div>
   </div>
+
+
+  <div class="modal fade" id="emailModal" role="dialog">
+        <div class="modal-dialog modal-sl">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" style="text-align: center;"><font color="#07b2ff">Share via Email</font></h4>
+            </div>
+            <div class="modal-body">
+                <!-- <div>
+                    <font color="black">Share URL : </font>
+                    <font color="black"><label>{{currentURL}}</label></font>
+                </div>
+                <br />
+                <div>
+                    <font color="black">Email To : </font> <input type="text" class="form-control"
+                        placeholder="sample@domain.com" />
+                </div>
+                <br />
+                <div>
+                    <font color="black">Notes : </font> <textarea rows="10" class="form-control"></textarea>
+                </div> -->
+
+                <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm);">
+                    <div class="form-group">
+                        <font color="black"><label>Share URL : {{currentURL}}</label></font>
+                    </div>
+                    <div class="form-group">
+                        <font color="black"><label for="recipient-name" class="control-label">Email To:</label></font>
+                        <input type="text" class="form-control" name="email" ngModel #email="ngModel" placeholder="sample@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <font color="black"><label for="recipient-name" class="control-label">Subject:</label></font>
+                        <input type="text" class="form-control" name="subject" [(ngModel)]="subjecttext" #subject="ngModel">
+                
+                    </div>
+                    <div class="form-group">
+                        <font color="black"><label for="message-text" class="control-label">Notes:</label></font>
+                        <textarea style="overflow:auto;resize:none" class="form-control" name="message" [(ngModel)]="messagetext"
+                            #message="ngModel" required rows="3"></textarea>
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+                    </div>
+                </form>
+            
+            </div>
+          </div>
+          
+        </div>
+      </div>
 
 </div>
 
