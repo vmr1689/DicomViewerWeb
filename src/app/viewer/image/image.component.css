@@ -209,3 +209,19 @@ a[tabindex]:focus {
     color:blue !important;
     outline: none;
 }
+
+.rightButton ul{
+list-style: none;
+}
+
+.rightButton ul li{
+    margin: 5px auto;
+}
+
+.rightButton .btn{
+    width: 200px;
+}
+
+.btnFontSize{
+    font-size: 18px;
+}

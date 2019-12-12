@@ -13,6 +13,7 @@ import { SpinnerService } from 'src/app/shared/utilities';
 
 import { ImageStudy, FirstInstanceModel } from '../../shared/models';
 import { NgForm } from '@angular/forms';
+import { NotesService } from 'src/app/shared/services/notes.service';
 declare var $: any;
 declare var cornerstoneWADOImageLoader: any;
 
@@ -32,10 +33,12 @@ export class ImageComponent implements OnInit {
   listDicomTags: any[];
   dicomTags: object;
   currentURL='';
+  notesList: any;
 
   constructor(
     private patientsSvc: PatientsService,
     private emailSvc: EmailService,
+    private notesSvc: NotesService,
     private route: ActivatedRoute,
     private spinnerService: SpinnerService) {
       this.currentURL = window.location.href; 
@@ -224,6 +227,30 @@ export class ImageComponent implements OnInit {
       else {
         this.spinnerService.hide();
       }
+    });
+  }
+
+  addNotes(form: NgForm) {
+    debugger;
+    this.spinnerService.show();
+    let notesModel = {
+      InstanceId: this.selectedinstanceId,
+      NotesSummary: form.value.notes
+    };
+
+    this.notesSvc.addNotes(notesModel).subscribe((response: any) => {
+      if (response) {
+        this.spinnerService.hide();
+      }
+      else {
+        this.spinnerService.hide();
+      }
+    });
+  }
+
+  getNotesByInstanceId(){
+    this.notesSvc.getNotesByInstanceId(this.selectedinstanceId).subscribe((response: any) => {
+      this.notesList = response;
     });
   }
   

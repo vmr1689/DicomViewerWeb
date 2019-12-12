@@ -17,23 +17,26 @@
 
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Pan" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" (click)="enableTools('pan')">
+                        <a title="Pan" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('pan')">
                             <i class="fa fa-hand-stop-o"></i> <i class="fa fa-sort-down arrow_down"></i>
                             <span class="txt"><small>Pan</small></span>
                         </a>
 
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Zoom" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" (click)="enableTools('zoom')">
-                            <i class="fa fa-2x fa-search"></i> 
+                        <a title="Zoom" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('zoom')">
+                            <i class="fa fa-2x fa-search"></i>
                             <!-- <i class="fa fa-sort-down arrow_down"></i> -->
                             <span class="txt"><small>Zoom</small></span>
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" (click)="enableTools('rectangleRoi')">
+                        <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('rectangleRoi')">
                             <i class="fa fa-2x fa-square"></i>
-                             <!-- <i class="fa fa-sort-down arrow_down"></i> -->
+                            <!-- <i class="fa fa-sort-down arrow_down"></i> -->
                             <span class="txt"><small>Measure</small></span>
                         </a>
                     </li>
@@ -51,8 +54,8 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Angle" href="" class="dropdown-toggle" data-toggle="dropdown"
-                            aria-expanded="false" (click)="enableTools('angle')">
+                        <a title="Angle" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('angle')">
                             <i class="fa fa-2x fa-angle-left"></i>
                             <span class="txt"><small>Angle</small></span>
                         </a>
@@ -90,12 +93,13 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Reset" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" (click)="enableTools('reset')">
+                        <a title="Reset" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('reset')">
                             <i class="fa fa-refresh"></i>
                             <span class="txt"><small>Reset</small></span>
                         </a>
                     </li>
-                    <li class="dropdown notifications-menu">
+                    <!-- <li class="dropdown notifications-menu">
                         <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#myModal"
                             (click)="viewDicomTags()">
                             <i class="glyphicon glyphicon-tags"></i>
@@ -103,15 +107,21 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#emailModal">
-                            <i class="fa fa-envelope"></i>
-                            <span class="txt"><small>Email</small></span>
+                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal"
+                            data-target="#emailModal">
+                            <i class="fa fa-share-alt"></i>
+                            <span class="txt"><small>Share</small></span>
                         </a>
                     </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Notes" href="" class="dropdown-toggle" data-toggle="modal" data-target="#notesModal">
+                            <i class="fa-sticky-note-o"></i>
+                            <span class="txt"><small>Notes</small></span>
+                        </a>
+                    </li> -->
                 </ul>
             </div>
         </nav>
-        
     </header>
     <aside class="main-sidebar">
         <section class="sidebar">
@@ -127,7 +137,8 @@
                     </a>
                     <ul class="treeview-menu" *ngFor="let series of imageStudy.series; let i = index">
                         <span class="sub_txt">
-                            <small><i class="fa fa-folder-open"></i>{{selectedInstanceImg}}/{{series.instancesCount}}</small>
+                            <small><i
+                                    class="fa fa-folder-open"></i>{{selectedInstanceImg}}/{{series.instancesCount}}</small>
                             <small><i class="fa fa-text"></i>{{series.mainDicomTags.protocolName}}</small>
                         </span>
                         <li>
@@ -149,7 +160,7 @@
     <div class="content-wrapper">
         <section class="content pt_5">
             <div class="row">
-                <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-10 col-xs-10">
                     <div class="box cust_box">
                         <div class="box-header pad_0" style="position: relative;background: #171819;">
                             <!-- <h3 class="box-title text-left">1 <br /> 1250 x 780<br /></h3> -->
@@ -174,8 +185,7 @@
                                         </div>
                                     </div> -->
 
-                                    <div id="dicomImage"
-                                        style="min-height: 820px;width:100%;">
+                                    <div id="dicomImage" style="min-height: 820px;width:100%;">
                                     </div>
 
                                     <!-- <img src="{{selectedInstanceModel.preview}}" alt="User Image"
@@ -184,6 +194,7 @@
                             </ul>
                         </div>
                         <div class="box-header pad_0" style="position: relative;background: #171819;">
+
                             <h3 class="box-title text-left">1 <br /> 1250 x 780<br /></h3>
                             <div class="pull-right text-right">
                                 <small>Ananymized</small><br /><small>2019-03-18 14:12:47</small>
@@ -191,109 +202,161 @@
 
                         </div>
                     </div>
+
+                </div>
+                <div class="col-lg-2 col-xs-2 rightButton">
+                
+                    <ul>
+                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#myModal"
+                                (click)="viewDicomTags()"><i class="fa fa-tag"></i> Dicom Tags</a></li>
+                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#emailModal"><i
+                                    class="fa fa-share-alt"></i> Share</a></li>
+                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#notesModal"><i
+                                    class="fa fa-sticky-note-o"></i> Notes</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="text-align: center;"><font color="#07b2ff">Dicom Tags</font></h4>
-        </div>
-        <div class="modal-body">
-          <!-- <p>Some text in the modal.</p> -->
-          <div style="padding:10px 5px" class="box-body card-no-border f15">
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="text-primary">
-                  <tr>
-                    <th>Tag</th>
-                    <th>Name</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let x of dicomTags | keyvalue">
-                        <td>{{x.key}}</td>
-                        <td>{{x.value.Name}}</td>
-                        <td>{{x.value.Value}}</td>
-                
-                    </tr>
-                </tbody>
-              </table>
-              </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center;">
+                        <font color="#07b2ff">Dicom Tags</font>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <!-- <p>Some text in the modal.</p> -->
+                    <div style="padding:10px 5px" class="box-body card-no-border f15">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Tag</th>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let x of dicomTags | keyvalue">
+                                        <td>{{x.key}}</td>
+                                        <td>{{x.value.Name}}</td>
+                                        <td>{{x.value.Value}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
+
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
 
 
-  <div class="modal fade" id="emailModal" role="dialog">
+    <div class="modal fade" id="emailModal" role="dialog">
         <div class="modal-dialog modal-sl">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" style="text-align: center;"><font color="#07b2ff">Share via Email</font></h4>
-            </div>
-            <div class="modal-body">
-                <!-- <div>
-                    <font color="black">Share URL : </font>
-                    <font color="black"><label>{{currentURL}}</label></font>
-                </div>
-                <br />
-                <div>
-                    <font color="black">Email To : </font> <input type="text" class="form-control"
-                        placeholder="sample@domain.com" />
-                </div>
-                <br />
-                <div>
-                    <font color="black">Notes : </font> <textarea rows="10" class="form-control"></textarea>
-                </div> -->
 
-                <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm);">
-                    <div class="form-group">
-                        <font color="black"><label>Share URL : {{currentURL}}</label></font>
-                    </div>
-                    <div class="form-group">
-                        <font color="black"><label for="recipient-name" class="control-label">Email To:</label></font>
-                        <input type="text" class="form-control" name="email" ngModel #email="ngModel" placeholder="sample@domain.com">
-                    </div>
-                    <div class="form-group">
-                        <font color="black"><label for="recipient-name" class="control-label">Subject:</label></font>
-                        <input type="text" class="form-control" name="subject" [(ngModel)]="subjecttext" #subject="ngModel">
-                
-                    </div>
-                    <div class="form-group">
-                        <font color="black"><label for="message-text" class="control-label">Notes:</label></font>
-                        <textarea style="overflow:auto;resize:none" class="form-control" name="message" [(ngModel)]="messagetext"
-                            #message="ngModel" required rows="3"></textarea>
-                    </div>
-                
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info"><i class="fa fa-envelope"></i>&nbsp;Send</button>
-                    </div>
-                </form>
-            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center;">
+                        <font color="#07b2ff">Share via Email</font>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm);">
+                        <div class="form-group">
+                            <font color="black"><label>Share URL : {{currentURL}}</label></font>
+                        </div>
+                        <div class="form-group">
+                            <font color="black"><label for="recipient-name" class="control-label">Email To:</label>
+                            </font>
+                            <input type="text" class="form-control" name="email" ngModel #email="ngModel"
+                                placeholder="sample@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <font color="black"><label for="recipient-name" class="control-label">Subject:</label>
+                            </font>
+                            <input type="text" class="form-control" name="subject" [(ngModel)]="subjecttext"
+                                #subject="ngModel">
+
+                        </div>
+                        <div class="form-group">
+                            <font color="black"><label for="message-text" class="control-label">Message:</label></font>
+                            <textarea style="overflow:auto;resize:none" class="form-control" name="message"
+                                [(ngModel)]="messagetext" #message="ngModel" required rows="3"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
-          </div>
-          
+
         </div>
-      </div>
+    </div>
+
+    <div class="modal fade" id="notesModal" role="dialog">
+        <div class="modal-dialog modal-sl">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center;">
+                        <font color="#07b2ff">Notes</font>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form #notesForm="ngForm" (ngSubmit)="addNotes(notesForm);">
+                        <div class="form-group">
+                            <font color="black"><label for="message-text" class="control-label">Notes:</label></font>
+                            <textarea style="overflow:auto;resize:none" class="form-control" name="notes"
+                                [(ngModel)]="notestext" #notes="ngModel" required rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info">Add Notes</button>
+                        </div>
+                        <div class="form-group">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <font color="#black">test notes 1</font>
+                                        </td>
+                                        <td><a><i class="fa fa-trash"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <font color="#black">test notes 2</font>
+                                        </td>
+                                        <td><a><i class="fa fa-trash"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
-
-
-

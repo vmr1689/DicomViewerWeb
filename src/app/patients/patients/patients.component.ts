@@ -25,8 +25,6 @@ export class PatientsComponent implements OnInit {
     }).add(() => {
       this.spinnerService.hide();
     });
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
   }
 
   patientsClick(id: any) {
