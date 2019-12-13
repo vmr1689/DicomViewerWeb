@@ -220,8 +220,13 @@ list-style: none;
 
 .rightButton .btn{
     width: 200px;
+    height: 60px;
 }
 
 .btnFontSize{
     font-size: 18px;
 }
+
+
+
+

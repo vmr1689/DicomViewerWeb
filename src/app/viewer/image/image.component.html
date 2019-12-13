@@ -1,28 +1,51 @@
-<div class="wrapper">
+<div class="wrapper" #fullScreen>
     <header class="main-header">
         <a href="index2.html" class="logo">
             <!-- <span class="logo-mini"><b>HL</b>C</span>
             <span class="logo-lg"><i class="fa fa-heartbeat logo_icon"></i><b>E-Health</b>Care</span> -->
             <span class="logo-lg"><b>Dicom Web Viewer</b> </span>
         </a>
+        
         <nav class="navbar navbar-static-top" style="background-color:#171819;">
+                
             <div class="navbar-custom-menu">
+                    <!-- <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div> -->
                 <ul class="nav navbar-nav">
                     <li class="dropdown messages-menu">
                         <a title="Windowing" href="" tabIndex="1" class="dropdown-toggle" data-toggle="dropdown"
-                            aria-expanded="false" (click)="enableTools('bright')">
+                            aria-expanded="false">
                             <i class="fa fa-adjust"></i> <i class="fa fa-sort-down arrow_down"></i>
                             <span class="txt"><small>Windowing</small></span>
                         </a>
-
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Windowing" href="" tabIndex="1" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('bright')">
+                                    <i class="fa fa-adjust"></i>Windowing
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Invert" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('invert')">
+                                    <i class="fa fa-2x fa-adjust"></i>Invert
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="dropdown notifications-menu">
                         <a title="Pan" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
                             (click)="enableTools('pan')">
-                            <i class="fa fa-hand-stop-o"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <i class="fa fa-hand-stop-o"></i>
                             <span class="txt"><small>Pan</small></span>
                         </a>
-
                     </li>
                     <li class="dropdown notifications-menu">
                         <a title="Zoom" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
@@ -33,38 +56,99 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                            (click)="enableTools('rectangleRoi')">
-                            <i class="fa fa-2x fa-square"></i>
-                            <!-- <i class="fa fa-sort-down arrow_down"></i> -->
-                            <span class="txt"><small>Measure</small></span>
+                        <a title="Annotation" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-2x fas fa-font"></i><i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Annotation</small></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('rectangleRoi')">
+                                    <i class="fa fa-2x fa-square"></i>RectangleRoi
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Length Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('length')">
+                                    <i class="fa fa-arrows-v"></i>Length
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Cobb Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('cobb')">
+                                    <i class="fa fa-expand"></i>Cobb
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Angle" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('angle')">
+                                    <i class="fa fa-2x fa-angle-left"></i>Angle
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Text" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom" aria-expanded="false"
+                                    (click)="enableTools('text')">
+                                    <i class="fa fa-2x fas fa-font"></i>Text
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Elliptical Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('elliptical')">
+                                    <i class="fa fa-circle-o"></i>Elliptical
+                                </a>
+                            </li>
+                            <li>
+                                <a title="BiDirectional Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('bi-directional')">
+                                    <i class="fa fa-plus"></i>Bi-Directional
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Arrow Annotation" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('arrow-annotation')">
+                                    <i class="fa fa-long-arrow-left"></i>Arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Probe" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('probe')">
+                                    <i class="fa fa-dot-circle-o"></i>Probe
+                                </a>
+                            </li>
+                    
+                        </ul>
                     </li>
                     <li class="dropdown notifications-menu">
                         <a title="Rotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-rotate-right"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <i class="fa fa-rotate-right"></i><i class="fa fa-sort-down arrow_down"></i>
                             <span class="txt"><small>Rotate</small></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Rotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('rotate')">
+                                    <i class="fa fa-rotate-right"></i>Rotate
+                                </a>
+                            </li>
+                            <li>
+                                <a title="HFlip" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('hFlip')">
+                                    <i class="fa fa-rotate-right"></i>HFlip
+                                </a>
+                            </li>
+                            <li>
+                                <a title="VFlip" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('vFlip')">
+                                    <i class="fa fa-rotate-left"></i>VFlip
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="dropdown notifications-menu">
                         <a title="Magnifier" href="" class="dropdown-toggle" data-toggle="dropdown"
                             aria-expanded="false" (click)="enableTools('magnify')">
-                            <i class="fa fa-search-plus"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <i class="fa fa-search-plus"></i>
                             <span class="txt"><small>Magnif..</small></span>
-                        </a>
-                    </li>
-                    <li class="dropdown notifications-menu">
-                        <a title="Angle" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                            (click)="enableTools('angle')">
-                            <i class="fa fa-2x fa-angle-left"></i>
-                            <span class="txt"><small>Angle</small></span>
-                        </a>
-                    </li>
-                    <li class="dropdown notifications-menu">
-                        <a title="Text" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
-                            aria-expanded="false" (click)="enableTools('text')">
-                            <i class="fa fa-2x fas fa-font"></i>
-                            <span class="txt"><small>Text</small></span>
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
@@ -73,21 +157,16 @@
                             <span class="txt"><small>Scroll</small></span>
                         </a>
                     </li>
-                    <!-- <li class="dropdown notifications-menu">
-                        <a title="Export" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i> <i class="fa fa-sort-down arrow_down"></i>
-                            <span class="txt"><small>Export</small></span>
+                    <li class="dropdown notifications-menu">
+                        <a title="Drag Probe" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                            aria-expanded="false" (click)="enableTools('dragprobe')">
+                            <i class="fa fa-mouse-pointer"></i>
+                            <span class="txt"><small>Drag</small></span>
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Print" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-print"></i> <i class="fa fa-sort-down arrow_down"></i>
-                            <span class="txt"><small>Print</small></span>
-                        </a>
-                    </li> -->
-                    <li class="dropdown notifications-menu">
                         <a title="Fullscreen" href="" class="dropdown-toggle" data-toggle="dropdown"
-                            aria-expanded="false">
+                            aria-expanded="false" (click)="openFullscreen()">
                             <i class="fa fa-arrows-alt"></i>
                             <span class="txt"><small>Fullsc..</small></span>
                         </a>
@@ -99,26 +178,6 @@
                             <span class="txt"><small>Reset</small></span>
                         </a>
                     </li>
-                    <!-- <li class="dropdown notifications-menu">
-                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal" data-target="#myModal"
-                            (click)="viewDicomTags()">
-                            <i class="glyphicon glyphicon-tags"></i>
-                            <span class="txt"><small>Dicom Tags</small></span>
-                        </a>
-                    </li>
-                    <li class="dropdown notifications-menu">
-                        <a title="Dicom Tags" href="" class="dropdown-toggle" data-toggle="modal"
-                            data-target="#emailModal">
-                            <i class="fa fa-share-alt"></i>
-                            <span class="txt"><small>Share</small></span>
-                        </a>
-                    </li>
-                    <li class="dropdown notifications-menu">
-                        <a title="Notes" href="" class="dropdown-toggle" data-toggle="modal" data-target="#notesModal">
-                            <i class="fa-sticky-note-o"></i>
-                            <span class="txt"><small>Notes</small></span>
-                        </a>
-                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -170,26 +229,11 @@
                             </div>
 
                         </div>
-
-
-
                         <div class="box-body pad_0">
                             <ul class="users-list clearfix w100per">
                                 <li style="min-height: 800px;">
-                                    <!-- <div id="dicomImageWrapper"
-                                        style="width: 300px;height: 300px;position:relative;background-color:black"
-                                        oncontextmenu="return false" onmousedown="return false">
-
-                                        <div id="{{'dicomImage_'+ image.name }}"
-                                            style="top:0px;left:0px;position:absolute">
-                                        </div>
-                                    </div> -->
-
                                     <div id="dicomImage" style="min-height: 820px;width:100%;">
                                     </div>
-
-                                    <!-- <img src="{{selectedInstanceModel.preview}}" alt="User Image"
-                                        style="min-height: 720px;width:500px;padding-top:30px"> -->
                                 </li>
                             </ul>
                         </div>
@@ -208,11 +252,16 @@
                 
                     <ul>
                         <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#myModal"
-                                (click)="viewDicomTags()"><i class="fa fa-tag"></i> Dicom Tags</a></li>
+                                (click)="viewDicomTags()"><i class="fa fa-tags"></i> 
+                                <br>
+                                Dicom Tags
+                                </a></li>
                         <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#emailModal"><i
-                                    class="fa fa-share-alt"></i> Share</a></li>
-                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#notesModal"><i
-                                    class="fa fa-sticky-note-o"></i> Notes</a></li>
+                                    class="fa fa-share-alt"></i><br> Share</a></li>
+                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" (click)="viewAddNotes()"><i
+                                    class="fa fa-sticky-note-o"></i><br> Notes</a></li>
+                        <li><a class="btn btn-primary btnFontSize"><i
+                                    class="fa fa-columns"></i><br> Segments</a></li>
                     </ul>
                 </div>
             </div>
@@ -332,7 +381,7 @@
                         </div>
                         <div class="form-group">
                             <table class="table table-bordered">
-                                <tbody>
+                                <!-- <tbody>
                                     <tr>
                                         <td>
                                             <font color="#black">test notes 1</font>
@@ -344,6 +393,15 @@
                                             <font color="#black">test notes 2</font>
                                         </td>
                                         <td><a><i class="fa fa-trash"></i></a></td>
+                                    </tr>
+                                </tbody> -->
+                                <tbody>
+                                    <tr *ngFor="let notes of notesList; let i = index">
+                                        <td>
+                                            <span style="color:black">{{notes.notesSummary}}</span>
+                                        </td>
+                                        <td><a (click)="deleteNotes(notes.notesId)"><i class="fa fa-trash"></i></a></td>
+                                
                                     </tr>
                                 </tbody>
                             </table>

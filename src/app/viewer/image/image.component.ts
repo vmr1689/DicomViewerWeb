@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import Hammer from 'hammerjs';
@@ -32,17 +32,18 @@ export class ImageComponent implements OnInit {
   instancesTotlaCount: any;
   listDicomTags: any[];
   dicomTags: object;
-  currentURL='';
+  currentURL = '';
   notesList: any;
-
+  state: string = 'default';
+  @ViewChild('fullScreen', { static: false }) divRef;
   constructor(
     private patientsSvc: PatientsService,
     private emailSvc: EmailService,
     private notesSvc: NotesService,
     private route: ActivatedRoute,
     private spinnerService: SpinnerService) {
-      this.currentURL = window.location.href; 
-      console.log("Current URL",this.currentURL);
+    this.currentURL = window.location.href;
+    console.log("Current URL", this.currentURL);
     cornerstoneTools.external.Hammer = Hammer;
     cornerstoneTools.external.cornerstone = cornerstone;
     //cornerstoneWebImageLoader.external.cornerstone = cornerstone;
@@ -50,11 +51,11 @@ export class ImageComponent implements OnInit {
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 
     cornerstoneWADOImageLoader.configure({
-      beforeSend: function(xhr) {
-          // Add custom headers here (e.g. auth tokens)
-          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      beforeSend: function (xhr) {
+        // Add custom headers here (e.g. auth tokens)
+        xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
       }
-  });
+    });
 
 
     cornerstoneTools.init();
@@ -90,11 +91,11 @@ export class ImageComponent implements OnInit {
     });
   }
 
-  renderImage(instanceId: any,selectedInstanceImg:any,instancesCount:any) {
+  renderImage(instanceId: any, selectedInstanceImg: any, instancesCount: any) {
     debugger;
     cornerstone.reset(document.getElementById('dicomImage'));
 
-    this.selectedInstanceImg = selectedInstanceImg+1;
+    this.selectedInstanceImg = selectedInstanceImg + 1;
     this.instancesTotlaCount = instancesCount;
     this.selectedinstanceId = instanceId;
     this.spinnerService.show();
@@ -146,7 +147,7 @@ export class ImageComponent implements OnInit {
 
     this.patientsSvc.GetInstancePreviewById(this.selectedinstanceId).subscribe((data: any) => {
       const aa = 'wadouri:' + data.path;
-      cornerstone.loadImage(aa).then(function(image) {
+      cornerstone.loadImage(aa).then(function (image) {
         cornerstone.displayImage(diacomImageElement, image);
       });
     }).add(() => {
@@ -161,7 +162,7 @@ export class ImageComponent implements OnInit {
     // cornerstoneTools.setToolDisabled('Pan');
     // cornerstoneTools.setToolDisabled('Angle');
     // cornerstoneTools.setToolDisabled('RectangleRoi');
-
+    const diacomImageElement = document.getElementById('dicomImage');
     if (tool === 'bright') {
       cornerstoneTools.setToolActive('Wwwc', { mouseButtonMask: 1 });
     }
@@ -178,12 +179,45 @@ export class ImageComponent implements OnInit {
       cornerstoneTools.setToolActive('RectangleRoi', { mouseButtonMask: 1 });
     }
     if (tool === 'invert') {
-      const imageId = 'dicomImage_' + imageName;
-      const diacomImageElement = document.getElementById(imageId);
-
+      // const diacomImageElement = document.getElementById('dicomImage');
       const viewport = cornerstone.getViewport(diacomImageElement);
       viewport.invert = !viewport.invert;
       cornerstone.setViewport(diacomImageElement, viewport);
+    }
+    if (tool === 'elliptical') {
+      const EllipticalRoiTool = cornerstoneTools.EllipticalRoiTool;
+      cornerstoneTools.addTool(EllipticalRoiTool)
+      cornerstoneTools.setToolActive('EllipticalRoi', { mouseButtonMask: 1 })
+    }
+    if (tool === 'bi-directional') {
+      const BidirectionalTool = cornerstoneTools.BidirectionalTool;
+      cornerstoneTools.addTool(BidirectionalTool)
+      cornerstoneTools.setToolActive('Bidirectional', { mouseButtonMask: 1 })
+    }
+    if (tool === 'arrow-annotation') {
+      const ArrowAnnotateTool = cornerstoneTools.ArrowAnnotateTool;
+      cornerstoneTools.addTool(ArrowAnnotateTool)
+      cornerstoneTools.setToolActive('ArrowAnnotate', { mouseButtonMask: 1 })
+    }
+    if (tool === 'dragprobe') {
+      const DragProbeTool = cornerstoneTools.DragProbeTool;
+      cornerstoneTools.addTool(DragProbeTool)
+      cornerstoneTools.setToolActive('DragProbe', { mouseButtonMask: 1 })
+    }
+    if (tool === 'probe') {
+      const ProbeTool = cornerstoneTools.ProbeTool;
+      cornerstoneTools.addTool(ProbeTool)
+      cornerstoneTools.setToolActive('Probe', { mouseButtonMask: 1 })
+    }
+    if (tool === 'length') {
+      const LengthTool = cornerstoneTools.LengthTool;
+      cornerstoneTools.addTool(LengthTool)
+      cornerstoneTools.setToolActive('Length', { mouseButtonMask: 1 })
+    }
+    if (tool === 'cobb') {
+      const CobbAngleTool = cornerstoneTools.CobbAngleTool;
+      cornerstoneTools.addTool(CobbAngleTool)
+      cornerstoneTools.setToolActive('CobbAngle', { mouseButtonMask: 1 })
     }
     if (tool === 'magnify') {
       cornerstoneTools.setToolActive('Magnify', { mouseButtonMask: 1 });
@@ -191,20 +225,38 @@ export class ImageComponent implements OnInit {
     if (tool === 'text') {
       cornerstoneTools.setToolActive('TextMarker', { mouseButtonMask: 1 });
     }
+    if (tool === 'rotate') {
+      const RotateTool = cornerstoneTools.RotateTool;
+      cornerstoneTools.addTool(RotateTool)
+      cornerstoneTools.setToolActive('Rotate', { mouseButtonMask: 1 })
+    }
+    if (tool === 'hFlip') {
+      const viewport = cornerstone.getViewport(diacomImageElement);
+        viewport.hflip = !viewport.hflip;
+        cornerstone.setViewport(diacomImageElement, viewport);
+    }
+    if (tool === 'vFlip') {
+      const viewport = cornerstone.getViewport(diacomImageElement);
+        viewport.vflip = !viewport.vflip;
+        cornerstone.setViewport(diacomImageElement, viewport);
+    }
+    if (tool === 'reset') {
+      cornerstone.reset(diacomImageElement);
+    }
   }
 
-  viewDicomTags(){
+  viewDicomTags() {
     debugger;
-    console.log("Instance",this.selectedinstanceId);
+    console.log("Instance", this.selectedinstanceId);
     this.spinnerService.show();
     this.patientsSvc.GetDicomTagsById(this.selectedinstanceId).subscribe((data: any) => {
-      console.log("Dicom Tags",data);
-    //   let dicomTags = Object.keys(data);
-    //   let goodResponse = [];
-    //   for (let prop of dicomTags) { 
-    //     goodResponse.push(dicomTags[prop]);
-    // }
-    this.dicomTags = data;
+      console.log("Dicom Tags", data);
+      //   let dicomTags = Object.keys(data);
+      //   let goodResponse = [];
+      //   for (let prop of dicomTags) { 
+      //     goodResponse.push(dicomTags[prop]);
+      // }
+      this.dicomTags = data;
     }).add(() => {
       this.spinnerService.hide();
     });
@@ -233,6 +285,7 @@ export class ImageComponent implements OnInit {
   addNotes(form: NgForm) {
     debugger;
     this.spinnerService.show();
+    //this.getNotesByInstanceId();
     let notesModel = {
       InstanceId: this.selectedinstanceId,
       NotesSummary: form.value.notes
@@ -240,6 +293,7 @@ export class ImageComponent implements OnInit {
 
     this.notesSvc.addNotes(notesModel).subscribe((response: any) => {
       if (response) {
+        this.getNotesByInstanceId();
         this.spinnerService.hide();
       }
       else {
@@ -248,12 +302,45 @@ export class ImageComponent implements OnInit {
     });
   }
 
-  getNotesByInstanceId(){
+  getNotesByInstanceId() {
+    debugger;
     this.notesSvc.getNotesByInstanceId(this.selectedinstanceId).subscribe((response: any) => {
       this.notesList = response;
+      console.log("Notes List", this.notesList);
+      this.spinnerService.hide();
     });
   }
-  
+
+  viewAddNotes() {
+    this.spinnerService.show();
+    $("#notesModal").modal('show');
+    this.getNotesByInstanceId();
+  }
+
+  deleteNotes(notesId: any) {
+    var result = confirm("Are you sure to delete this notes?");
+    if (result) {
+      this.spinnerService.show();
+      this.notesSvc.deleteNotesByNoteId(notesId).subscribe((response: any) => {
+        this.getNotesByInstanceId();
+      });
+    }
+  }
+
+  openFullscreen() {
+    // Use this.divRef.nativeElement here to request fullscreen
+    const elem = this.divRef.nativeElement;
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+  }
 }
 
 
