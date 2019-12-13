@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ImageComponent } from './image/image.component';
+import { SegmentsComponent } from './segments/segments.component';
 
 const routes: Routes = [
     {
@@ -11,7 +12,11 @@ const routes: Routes = [
     {
         path: '',
         component: ImageComponent
-    }
+    },
+    {
+        path: 'segments',
+        component: SegmentsComponent
+    },
 ];
 
 @NgModule({

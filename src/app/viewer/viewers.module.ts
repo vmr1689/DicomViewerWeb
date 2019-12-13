@@ -8,10 +8,11 @@ import { ImageComponent } from './image/image.component';
 import { FormsModule } from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SegmentsComponent } from './segments/segments.component';
 
 
 @NgModule({
-  declarations: [ImageComponent],
+  declarations: [ImageComponent, SegmentsComponent],
   imports: [
     CommonModule,
     ViewersRoutingModule,
