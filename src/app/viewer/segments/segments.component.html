@@ -175,29 +175,29 @@
         <section class="sidebar">
             <ul class="sidebar-menu thumbnails" data-widget="tree">
                 <li class="treeview">
-                    <!-- <a href="">
-                        <span class="txt_menu">{{imageStudy.patientName}}</span>
-                        <small class="txt_menu" style="display:block" *ngIf="imageStudy.studyDate">Study Date :
-                            <span>{{imageStudy.studyDate}}</span></small>
+                    <a href="">
+                        <span class="txt_menu">{{imageSegment.patientName}}</span>
+                        <small class="txt_menu" style="display:block" *ngIf="imageSegment.instanceCreationDate">Instance Creation Date :
+                            <span>{{imageSegment.instanceCreationDate}}</span></small>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                    </a> -->
-                    <ul class="treeview-menu" *ngFor="let series of imageStudy.series; let i = index">
-                        <!-- <span class="sub_txt">
+                    </a>
+                    <ul class="treeview-menu">
+                        <span class="sub_txt">
                             <small><i
-                                    class="fa fa-folder-open"></i>{{selectedInstanceImg}}/{{series.instancesCount}}</small>
-                            <small><i class="fa fa-text"></i>{{series.mainDicomTags.protocolName}}</small>
-                        </span> -->
+                                    class="fa fa-folder-open"></i>{{selectedSegmentImg}}/{{segmentsTotlaCount}}</small>
+                            <!-- <small><i class="fa fa-text"></i>{{series.mainDicomTags.protocolName}}</small> -->
+                        </span>
                         <li>
-                            <!-- <ul class="users-list clearfix">
+                            <ul class="users-list clearfix">
                                 <li class="active_sub"
-                                    *ngFor="let instancesModel of series.instancesModel; let j = index">
-                                    <img src="{{instancesModel.instancePreview}}" alt="User Image"
-                                        (click)="renderImage(instancesModel.instanceId,j,series.instancesCount)">
+                                    *ngFor="let segment of imageSegment.segments; let j = index">
+                                    <img src="{{segment.url}}" alt="User Image"
+                                    >
                                     <span class="users-list-date">{{j+1}}</span>
                                 </li>
-                            </ul> -->
+                            </ul>
                         </li>
                         <div class="clearfix"></div>
                     </ul>

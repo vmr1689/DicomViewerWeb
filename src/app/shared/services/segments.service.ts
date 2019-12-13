@@ -23,8 +23,7 @@ export class SegmentsService {
 
 
     public getSegmentedFiles(instanceId: any) {
-        debugger;
-        return this.httpClient.get<any>(`${environment.apiUrl}/Notes/GetByInstanceId/` + instanceId, this.httpOptions);
+        return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetSegmentsByInstanceId/` + instanceId, this.httpOptions);
     }
 
 }
