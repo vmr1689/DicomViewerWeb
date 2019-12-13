@@ -260,7 +260,8 @@
                                     class="fa fa-share-alt"></i><br> Share</a></li>
                         <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" (click)="viewAddNotes()"><i
                                     class="fa fa-sticky-note-o"></i><br> Notes</a></li>
-                        <li><a class="btn btn-primary btnFontSize"><i
+                        <li><a class="btn btn-primary btnFontSize" target=”_blank” [routerLink]="['/segments']"
+                            [queryParams]="{ instanceId: selectedinstanceId}"><i
                                     class="fa fa-columns"></i><br> Segments</a></li>
                     </ul>
                 </div>
