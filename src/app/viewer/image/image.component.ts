@@ -341,6 +341,8 @@ export class ImageComponent implements OnInit {
       elem.webkitRequestFullscreen();
     }
   }
+
+
 }
 
 

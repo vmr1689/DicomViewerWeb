@@ -194,7 +194,7 @@
                                 <li class="active_sub"
                                     *ngFor="let segment of imageSegment.segments; let j = index">
                                     <img src="{{segment.url}}" alt="User Image"
-                                    >
+                                    (click)="renderImage(segment.url)">
                                     <span class="users-list-date">{{j+1}}</span>
                                 </li>
                             </ul>

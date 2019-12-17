@@ -56,9 +56,9 @@
                         </a>
                     </li>
                     <li class="dropdown notifications-menu">
-                        <a title="Annotation" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <a title="Annotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-2x fas fa-font"></i><i class="fa fa-sort-down arrow_down"></i>
-                            <span class="txt"><small>Annotation</small></span>
+                            <span class="txt"><small>Annotate</small></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -251,18 +251,37 @@
                 <div class="col-lg-2 col-xs-2 rightButton">
                 
                     <ul>
-                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#myModal"
-                                (click)="viewDicomTags()"><i class="fa fa-tags"></i> 
+                        <li><a href="" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                                (click)="viewDicomTags()"><i class="fa fa-tags" style="font-size: 25px;"></i> 
                                 <br>
                                 Dicom Tags
                                 </a></li>
-                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" data-target="#emailModal"><i
-                                    class="fa fa-share-alt"></i><br> Share</a></li>
-                        <li><a href="" class="btn btn-primary btnFontSize" data-toggle="modal" (click)="viewAddNotes()"><i
-                                    class="fa fa-sticky-note-o"></i><br> Notes</a></li>
-                        <li><a class="btn btn-primary btnFontSize" target=”_blank” [routerLink]="['/segments']"
-                            [queryParams]="{ instanceId: selectedinstanceId}"><i
-                                    class="fa fa-columns"></i><br> Segments</a></li>
+                        <li><a href="" class="btn btn-primary" data-toggle="modal" data-target="#emailModal"><i
+                                    class="fa fa-share-alt" style="font-size: 25px;"></i><br> Share</a></li>
+                        <li><a href="" class="btn btn-primary" data-toggle="modal" (click)="viewAddNotes()"><i
+                                    class="fa fa-sticky-note-o" style="font-size: 25px;"></i><br> Notes</a></li>
+                        <li>
+                            <!-- <a class="btn btn-primary btnFontSize " target=”_blank” [routerLink]="['/segments']"
+                                                                            [queryParams]="{ instanceId: selectedinstanceId}"><i
+                                                                                    class="fa fa-columns"></i><br> Segments</a> -->
+                            <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                                        <i class="fa fa-columns"></i><br>Segments
+                                                        <span class="caret"></span></button> -->
+                            <a class="btn btn-primary " data-toggle="dropdown"><i
+                                    class="fa fa-columns" style="font-size: 25px;"></i><br> Segments <span class="caret"></span></a>
+                            <ul class="dropdown-menu" style="margin-left:40px;width: 210px;">
+                                <li>
+                                    <a href="" data-toggle="modal" data-target="#thresholdSegmentModal">
+                                        Threshold
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target=”_blank” [routerLink]="['/segments']" [queryParams]="{ instanceId: selectedinstanceId}">
+                                        Region Growth
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -382,20 +401,6 @@
                         </div>
                         <div class="form-group">
                             <table class="table table-bordered">
-                                <!-- <tbody>
-                                    <tr>
-                                        <td>
-                                            <font color="#black">test notes 1</font>
-                                        </td>
-                                        <td><a><i class="fa fa-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <font color="#black">test notes 2</font>
-                                        </td>
-                                        <td><a><i class="fa fa-trash"></i></a></td>
-                                    </tr>
-                                </tbody> -->
                                 <tbody>
                                     <tr *ngFor="let notes of notesList; let i = index">
                                         <td>
@@ -418,4 +423,38 @@
         </div>
     </div>
 
+    <div class="modal fade" id="thresholdSegmentModal" role="dialog">
+            <div class="modal-dialog modal-sl">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="text-align: center;">
+                            <font color="#07b2ff">Threshold Segment</font>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form #thresholdSegmentForm="ngForm">
+                            <div class="form-group">
+                                <font color="black"><label for="message-text" class="control-label">Enter Segment value:</label></font>
+                                <!-- <input type="text" class="form-control" style="width: 70%;margin-left: 160px;margin-top: -30px;" name="segments" ngModel #segments="ngModel"> -->
+                                <div class="input-group">
+                                    <input type="number" min="2" max="6" value="{{counter}}" class="form-control" style="text-align:center;width: 100%;margin-left: 160px;margin-top: -30px;"
+                                        name="segments" ngModel #segments="ngModel">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="submit" class="btn btn-info">Submit</button> -->
+                                <a class="btn btn-info" target=”_blank” [routerLink]="['/segments']" [queryParams]="{ instanceId: selectedinstanceId,segmentsVal: segments.value}">
+                                    Submit
+                                </a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
 </div>

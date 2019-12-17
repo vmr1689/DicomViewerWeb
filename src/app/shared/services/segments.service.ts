@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class SegmentsService {
+  
     headers: HttpHeaders;
     httpOptions: {};
 
@@ -25,5 +26,17 @@ export class SegmentsService {
     public getSegmentedFiles(instanceId: any) {
         return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetSegmentsByInstanceId/` + instanceId, this.httpOptions);
     }
+
+    public segmentFiles(model: any) {
+        
+        debugger;
+        var url = `${environment.apiUrl}/Segments`;
+        var result = this.httpClient.post(url, {
+            InstanceId: model.InstanceId,
+            Segment: model.Segment
+        });
+        return result;
+    }
+
 
 }
