@@ -30,8 +30,10 @@
                   <td>{{study.patientMainDicomTags.patientName}}</td>
                   <td>{{study.patientMainDicomTags.patientSex}}</td>
                   <td>{{study.mainDicomTags.studyDescription}}</td>
-                  <td><a style="color: blue;" [routerLink]="['/image']"
-                    [queryParams]="{ studyId: study.id}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                  <!-- <td><a style="color: blue;" [routerLink]="['/image']"
+                    [queryParams]="{ studyId: study.id}"><i class="glyphicon glyphicon-eye-open"></i></a></td> -->
+                    <td><a style="color: blue;" [routerLink]="['/patients/series']"
+                      [queryParams]="{ studyId: study.id}"><i class="fa fa-link" style="color:#00acd6"></i></a></td>
                 </tr>
               </tbody>
             </table>

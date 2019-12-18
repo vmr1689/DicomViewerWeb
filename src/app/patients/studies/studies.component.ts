@@ -25,6 +25,7 @@ export class StudiesComponent implements OnInit {
         this.spinnerService.show();
         this.patientsSvc.getStudies(this.inputParam).subscribe(data => {
           this.allStudies = data;
+          console.log("Studies By Patient",this.allStudies);
         }).add(() => {
           this.spinnerService.hide();
         });

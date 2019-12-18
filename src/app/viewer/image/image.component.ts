@@ -35,6 +35,8 @@ export class ImageComponent implements OnInit {
   currentURL = '';
   notesList: any;
   state: string = 'default';
+  subjecttext : string;
+  messagetext = "Request you to comment on the study images";
   @ViewChild('fullScreen', { static: false }) divRef;
   constructor(
     private patientsSvc: PatientsService,
@@ -70,12 +72,13 @@ export class ImageComponent implements OnInit {
     $('body').addClass('hold-transition');
 
     this.route.queryParams.subscribe(params => {
-      this.studyId = params['studyId'];
+      //this.studyId = params['studyId'];
       this.seriesId = params['seriesId'];
-      if (this.studyId) {
+      if (this.seriesId) {
         this.spinnerService.show();
-        this.patientsSvc.GetImageStudyByStudyId(this.studyId).subscribe((data: ImageStudy) => {
+        this.patientsSvc.GetImageStudyByStudyId(this.seriesId).subscribe((data: ImageStudy) => {
           this.imageStudy = data;
+          this.subjecttext = "Radiology Second opinion - " + this.imageStudy['patientName'];
           this.selectedInstanceImg = data.series[0].instancesCount > 0 ? 1 : 0;
           this.instancesTotlaCount = data.series[0].instancesCount;
           this.selectedinstanceId = data.series[0].firstInstanceId;

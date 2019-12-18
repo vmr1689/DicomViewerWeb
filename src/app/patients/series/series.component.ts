@@ -18,7 +18,7 @@ export class SeriesComponent implements OnInit {
     private spinnerService: SpinnerService) { }
 
   ngOnInit() {
-
+debugger;
     this.route.queryParams.subscribe(params => {
       this.inputParam = params['studyId'];
       if (this.inputParam) {

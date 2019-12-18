@@ -1,16 +1,21 @@
 <div style="position: absolute;width:100%">
     <div class="login-box" style="border-top:3px solid #2467CB !important">
         <div class="login-box-body">
-            <div class="login-logo">
-                <a href="#"><span class="logo-lg">Dicom Viewer</span></a>
+            <div class="login-logo" style="margin-bottom:0px;">
+                <a href="#">
+                    <span class="logo-lg" style="color:#367fa9">XaMiNE</span>
+                    
+                </a>
             </div>
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Advanced Radiology Image Viewer</p>
+            <!-- <p class="login-box-msg">Advanced Radiology Image Viewer</p> -->
+            <!-- <p class="login-box-msg">Sign in to start your session</p> -->
 
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
                 <div class="form-group has-feedback">
                     <input type="text" formControlName="username" class="form-control" placeholder="Username"
                         [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <span class="fa fa-user form-control-feedback"></span>
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                         <div *ngIf="f.username.errors.required">Username is required</div>
                     </div>

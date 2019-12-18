@@ -19,6 +19,7 @@
                     <th>Modality</th>
                     <th>Performed Procedure Step Description</th>
                     <th>Sequence Name</th>
+                    <th>Total Series</th>
                     <!-- <th>Series Instance ID</th> -->
                     <!-- <th>Series Number</th> -->
                     <th>View</th>
@@ -33,11 +34,12 @@
                     <td>{{series.mainDicomTags.modality}}</td>
                     <td>{{series.mainDicomTags.performedProcedureStepDescription}}</td>
                     <td>{{series.mainDicomTags.sequenceName}}</td>
+                    <td>{{series.instances.length}}</td>
                     <!-- <td>{{series.mainDicomTags.seriesInstanceUID}}</td> -->
                     <!-- <td>{{series.mainDicomTags.seriesNumber}}</td> -->
 
                     <td><a style="color: blue;" [routerLink]="['/image']"
-                      [queryParams]="{ seriesId: series.id}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                      [queryParams]="{ seriesId: series.id}"><i class="fa fa-eye" style="color:#00acd6"></i></a></td>
                   </tr>
                 </tbody>
               </table>
