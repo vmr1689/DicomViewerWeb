@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/shared/services';
 import { ActivatedRoute } from '@angular/router';
 import { SpinnerService } from '../../shared/utilities';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-series',
@@ -15,7 +16,8 @@ export class SeriesComponent implements OnInit {
   constructor(
     private patientsSvc: PatientsService,
     private route: ActivatedRoute,
-    private spinnerService: SpinnerService) { }
+    private spinnerService: SpinnerService,
+    private _location: Location) { }
 
   ngOnInit() {
 debugger;
@@ -37,6 +39,10 @@ debugger;
         });
       }
     });
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 }

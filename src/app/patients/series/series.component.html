@@ -6,6 +6,7 @@
             <h3 class="box-title">
               {{"Series"}}
             </h3>
+            <button class="btn btn-primary pull-right" type="button" (click)="backClicked();"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp; Back</button>
           </div>
           <div style="padding:10px 5px" class="box-body card-no-border f15">
             <div class="table-responsive">
@@ -17,7 +18,8 @@
                     <!-- <th>Status</th> -->
                     <th>Body Part Examined Name</th>
                     <th>Modality</th>
-                    <th>Performed Procedure Step Description</th>
+                    <!-- <th>Performed Procedure Step Description</th> -->
+                    <th>Series Description</th>
                     <th>Sequence Name</th>
                     <th>Total Series</th>
                     <!-- <th>Series Instance ID</th> -->
@@ -32,7 +34,8 @@
                     <!-- <td>{{series.status }} </td> -->
                     <td>{{series.mainDicomTags.bodyPartExamined}}</td>
                     <td>{{series.mainDicomTags.modality}}</td>
-                    <td>{{series.mainDicomTags.performedProcedureStepDescription}}</td>
+                    <!-- <td>{{series.mainDicomTags.performedProcedureStepDescription}}</td> -->
+                    <td>{{series.mainDicomTags.seriesDescription}}</td>
                     <td>{{series.mainDicomTags.sequenceName}}</td>
                     <td>{{series.instances.length}}</td>
                     <!-- <td>{{series.mainDicomTags.seriesInstanceUID}}</td> -->

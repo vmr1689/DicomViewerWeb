@@ -206,7 +206,7 @@ ul.treeview-menu {
 
 /* selected link */
 a[tabindex]:focus {
-    color:rgba(93, 173, 235, 0.75) !important;
+    color:blue !important;
     outline: none;
 }
 
@@ -220,77 +220,12 @@ list-style: none;
 
 .rightButton .btn{
     width: 200px;
-    height: 70px;
+    height: 60px;
 }
 
 .btnFontSize{
     font-size: 18px;
 }
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
-
-   opacity: 1;
-
-}
-
-.customBtn {
-    font-family: Raleway-SemiBold;
-    font-size: 13px;
-    /* color: rgba(93, 173, 235, 0.75); */
-    color: rgba(249, 251, 252, 0.75);
-    letter-spacing: 1px;
-    line-height: 15px;
-    border: 1px solid rgba(58, 133, 191, 0.75);
-    border-radius: 10px;
-    background: transparent;
-    transition: all 0.3s ease 0s;
-    border-bottom: 3px solid rgba(58, 133, 191, 0.75);
-    border-top: 1px solid rgba(58, 133, 191, 0.75);
-    border-right: 3px solid rgba(58, 133, 191, 0.75);
-  }
-
-  .customBtn:hover {
-    color: #FFF;
-    background: rgba(58, 133, 191, 0.75);
-    border: 2px solid rgba(58, 133, 191, 0.75);
-  }
-
-  .active {
-    color:rgba(93, 173, 235, 0.75) !important;
-    outline: none;
-  }
-
-  .dropdown-menu>li>a:hover {
-    color: #FFF;
-    background: rgba(58, 133, 191, 0.75);
-    border: 2px solid rgba(58, 133, 191, 0.75);
-    border-radius: 10px;
-    
-  }
-
-  .dropdown-menu>li {
-    border-radius: 10px;
-    border-bottom: 1px solid rgba(203, 206, 207, 0.75);
-    /* border-top: 1px solid rgba(203, 206, 207, 0.75); */
-    
-  }
-
-  /* .dropdown-menu>li>a:hover {
-    color: rgba(93, 173, 235, 0.75);
-} */
-
-/* .navbar-nav>.notifications-menu>.dropdown-menu, .navbar-nav>.messages-menu>.dropdown-menu, .navbar-nav>.tasks-menu>.dropdown-menu {
-    width: 280px;
-    padding: 0 0 0 0;
-    margin: 0;
-    top: 109%;
-    width: 10%;
-} */
-
-
-
-
 
 
 

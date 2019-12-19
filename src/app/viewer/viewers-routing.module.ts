@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ImageComponent } from './image/image.component';
 import { SegmentsComponent } from './segments/segments.component';
+import { RgsegmentsComponent } from './rgsegments/rgsegments.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,10 @@ const routes: Routes = [
         path: 'segments',
         component: SegmentsComponent
     },
+    {
+        path: 'rgsegments',
+        component: RgsegmentsComponent
+    }
 ];
 
 @NgModule({

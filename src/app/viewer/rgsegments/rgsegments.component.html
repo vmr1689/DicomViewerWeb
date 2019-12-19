@@ -1,0 +1,242 @@
+<div class="wrapper" #fullScreen>
+    <header class="main-header">
+        <a href="index2.html" class="logo">
+            <span class="logo-lg"><b>XaMiNE</b> </span>
+        </a>
+        
+        <nav class="navbar navbar-static-top" style="background-color:#171819;">
+                
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown messages-menu">
+                        <a title="Windowing" href="" tabIndex="1" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa fa-adjust"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Windowing</small></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Windowing" href="" tabIndex="1" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('bright')">
+                                    <i class="fa fa-adjust"></i>Windowing
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Invert" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('invert')">
+                                    <i class="fa fa-2x fa-adjust"></i>Invert
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Pan" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('pan')">
+                            <i class="fa fa-hand-stop-o"></i>
+                            <span class="txt"><small>Pan</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Zoom" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('zoom')">
+                            <i class="fa fa-2x fa-search"></i>
+                            <!-- <i class="fa fa-sort-down arrow_down"></i> -->
+                            <span class="txt"><small>Zoom</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Annotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-2x fas fa-font"></i><i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Annotate</small></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Measure" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('rectangleRoi')">
+                                    <i class="fa fa-2x fa-square"></i>RectangleRoi
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Length Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('length')">
+                                    <i class="fa fa-arrows-v"></i>Length
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Cobb Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('cobb')">
+                                    <i class="fa fa-expand"></i>Cobb
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Angle" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('angle')">
+                                    <i class="fa fa-2x fa-angle-left"></i>Angle
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Text" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom" aria-expanded="false"
+                                    (click)="enableTools('text')">
+                                    <i class="fa fa-2x fas fa-font"></i>Text
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Elliptical Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('elliptical')">
+                                    <i class="fa fa-circle-o"></i>Elliptical
+                                </a>
+                            </li>
+                            <li>
+                                <a title="BiDirectional Measure" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('bi-directional')">
+                                    <i class="fa fa-plus"></i>Bi-Directional
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Arrow Annotation" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('arrow-annotation')">
+                                    <i class="fa fa-long-arrow-left"></i>Arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Probe" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                                    aria-expanded="false" (click)="enableTools('probe')">
+                                    <i class="fa fa-dot-circle-o"></i>Probe
+                                </a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Rotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-rotate-right"></i><i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Rotate</small></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a title="Rotate" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('rotate')">
+                                    <i class="fa fa-rotate-right"></i>Rotate
+                                </a>
+                            </li>
+                            <li>
+                                <a title="HFlip" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('hFlip')">
+                                    <i class="fa fa-rotate-right"></i>HFlip
+                                </a>
+                            </li>
+                            <li>
+                                <a title="VFlip" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                    (click)="enableTools('vFlip')">
+                                    <i class="fa fa-rotate-left"></i>VFlip
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Magnifier" href="" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false" (click)="enableTools('magnify')">
+                            <i class="fa fa-search-plus"></i>
+                            <span class="txt"><small>Magnif..</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Scroll" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-book"></i> <i class="fa fa-sort-down arrow_down"></i>
+                            <span class="txt"><small>Scroll</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Drag Probe" href="" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                            aria-expanded="false" (click)="enableTools('dragprobe')">
+                            <i class="fa fa-mouse-pointer"></i>
+                            <span class="txt"><small>Drag</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Fullscreen" href="" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false" (click)="openFullscreen()">
+                            <i class="fa fa-arrows-alt"></i>
+                            <span class="txt"><small>Fullsc..</small></span>
+                        </a>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a title="Reset" href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            (click)="enableTools('reset')">
+                            <i class="fa fa-refresh"></i>
+                            <span class="txt"><small>Reset</small></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu thumbnails" data-widget="tree">
+                <li class="treeview">
+                    <a href="">
+                        <span class="txt_menu">{{imageSegment.patientName}}</span>
+                        <small class="txt_menu" style="display:block" *ngIf="imageSegment.instanceCreationDate">Instance Creation Date :
+                            <span>{{imageSegment.instanceCreationDate}}</span></small>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <span class="sub_txt">
+                            <small><i
+                                    class="fa fa-folder-open"></i>{{selectedSegmentImg}}/{{segmentsTotlaCount}}</small>
+                            <!-- <small><i class="fa fa-text"></i>{{series.mainDicomTags.protocolName}}</small> -->
+                        </span>
+                        <li>
+                            <ul class="users-list clearfix">
+                                <li class="active_sub"
+                                    *ngFor="let segment of imageSegment.segments; let j = index">
+                                    <img src="{{segment.url}}" alt="User Image"
+                                    (click)="renderImage(segment.url)">
+                                    <span class="users-list-date">{{j+1}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <section class="content pt_5">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <div class="box cust_box">
+                        <div class="box-header pad_0" style="position: relative;background: #171819;">
+                            <div class="pull-right text-right">
+                                <small>Ananymized</small><br /><small>2019-03-18 14:12:47</small>
+                            </div>
+
+                        </div>
+                        <div class="box-body pad_0">
+                            <ul class="users-list clearfix w100per">
+                                <li style="min-height: 800px;">
+                                    <div id="dicomImage" style="min-height: 820px;width:100%;">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="box-header pad_0" style="position: relative;background: #171819;">
+
+                            <h3 class="box-title text-left">1 <br /> 1250 x 780<br /></h3>
+                            <div class="pull-right text-right">
+                                <small>Ananymized</small><br /><small>2019-03-18 14:12:47</small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>

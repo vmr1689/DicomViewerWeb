@@ -1,0 +1,20 @@
+.btn-primary {
+    font-family: Raleway-SemiBold;
+    font-size: 13px;
+    color: rgba(58, 133, 191, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 2px solid rgba(58, 133, 191, 0.75);
+    border-radius: 10px;
+    background: transparent;
+    transition: all 0.3s ease 0s;
+    border-bottom: 3px solid rgba(58, 133, 191, 0.75);
+    border-top: 1px solid rgba(58, 133, 191, 0.75);
+    border-right: 3px solid rgba(58, 133, 191, 0.75);
+  }
+
+  .btn-primary:hover {
+    color: #FFF;
+    background: rgba(58, 133, 191, 0.75);
+    border: 2px solid rgba(58, 133, 191, 0.75);
+  }

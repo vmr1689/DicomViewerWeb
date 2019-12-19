@@ -14,6 +14,7 @@ import { SpinnerService } from 'src/app/shared/utilities';
 import { ImageStudy, FirstInstanceModel } from '../../shared/models';
 import { NgForm } from '@angular/forms';
 import { NotesService } from 'src/app/shared/services/notes.service';
+import {Location} from '@angular/common';
 declare var $: any;
 declare var cornerstoneWADOImageLoader: any;
 
@@ -23,6 +24,7 @@ declare var cornerstoneWADOImageLoader: any;
   styleUrls: ['./image.component.css']
 })
 export class ImageComponent implements OnInit {
+  activeBtn : any;
   studyId: any;
   seriesId: any;
   imageStudy = {};
@@ -43,7 +45,8 @@ export class ImageComponent implements OnInit {
     private emailSvc: EmailService,
     private notesSvc: NotesService,
     private route: ActivatedRoute,
-    private spinnerService: SpinnerService) {
+    private spinnerService: SpinnerService,
+    private _location: Location) {
     this.currentURL = window.location.href;
     console.log("Current URL", this.currentURL);
     cornerstoneTools.external.Hammer = Hammer;
@@ -174,6 +177,7 @@ export class ImageComponent implements OnInit {
     }
     if (tool === 'pan') {
       cornerstoneTools.setToolActive('Pan', { mouseButtonMask: 1 });
+      //this.onClick('pan');
     }
     if (tool === 'angle') {
       cornerstoneTools.setToolActive('Angle', { mouseButtonMask: 1 });
@@ -344,6 +348,41 @@ export class ImageComponent implements OnInit {
       elem.webkitRequestFullscreen();
     }
   }
+
+  backClicked() {
+    this._location.back();
+  }
+
+  btnActive(check){
+    //    console.log(check);
+        if(check=='pan'){
+          this.activeBtn = 'pan';
+        }else if(check=='zoom'){
+          this.activeBtn = 'zoom';
+        }
+        else if(check=='annotate'){
+          this.activeBtn = 'annotate';
+        }  
+        else if(check=='rotateDDL'){
+          this.activeBtn = 'rotateDDL';
+        }  
+        else if(check=='magnify'){
+          this.activeBtn = 'magnify';
+        }  
+        else if(check=='windowningDDL'){
+          this.activeBtn = 'windowningDDL';
+        }  
+        else if(check=='dragprobe'){
+          this.activeBtn = 'dragprobe';
+        }  
+        else if(check=='fullscreen'){
+          this.activeBtn = 'fullscreen';
+        }  
+        else if(check=='reset'){
+          this.activeBtn = 'reset';
+        }  
+      
+    }
 
 
 }
