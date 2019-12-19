@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ImageComponent } from './image/image.component';
 import { SegmentsComponent } from './segments/segments.component';
 import { RgsegmentsComponent } from './rgsegments/rgsegments.component';
+import { KmsegmentsComponent } from './kmsegments/kmsegments.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'rgsegments',
         component: RgsegmentsComponent
+    },
+    {
+        path: 'kmsegments',
+        component: KmsegmentsComponent
     }
 ];
 

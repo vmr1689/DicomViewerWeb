@@ -12,11 +12,11 @@ declare var $: any;
 declare var cornerstoneWADOImageLoader: any;
 
 @Component({
-  selector: 'app-segments',
-  templateUrl: './segments.component.html',
-  styleUrls: ['./segments.component.css']
+  selector: 'app-kmsegments',
+  templateUrl: './kmsegments.component.html',
+  styleUrls: ['./kmsegments.component.css']
 })
-export class SegmentsComponent implements OnInit {
+export class KmsegmentsComponent implements OnInit {
   activeBtn : any;
   imageSegment = {};
   selectedSegmentId = '';
@@ -63,15 +63,15 @@ export class SegmentsComponent implements OnInit {
       let inputModel = {
         InstanceId: this.inputParam,
         Segment: this.inputSegmentVal,
-        IsThreshold : true,
-        IsKMeans:false,
+        IsThreshold : false,
+        IsKMeans:true,
         IsRegionGrowth:false
       }
       if (this.inputParam) {
         this.segmentsSVC.segmentFiles(inputModel).subscribe(segmentResp => {
           debugger;
           if (segmentResp) {
-            this.segmentsSVC.getTHSegmentedFiles(this.inputParam).subscribe(data => {
+            this.segmentsSVC.getKMSegmentedFiles(this.inputParam).subscribe(data => {
               this.selectedSegmentImg = data.segments.length > 0 ? 1 : 0;
               this.segmentsTotlaCount = data.segments.length;
               this.imageSegment = data;
@@ -273,5 +273,4 @@ export class SegmentsComponent implements OnInit {
         }  
       
     }
-
 }

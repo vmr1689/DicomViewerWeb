@@ -23,8 +23,19 @@ export class SegmentsService {
     }
 
 
-    public getSegmentedFiles(instanceId: any) {
-        return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetSegmentsByInstanceId/` + instanceId, this.httpOptions);
+    public getTHSegmentedFiles(instanceId: any) {
+        debugger;
+        return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetTHSegmentsByInstanceId/` + instanceId, this.httpOptions);
+    }
+
+    public getKMSegmentedFiles(instanceId: any) {
+        debugger;
+        return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetKMSegmentsByInstanceId/` + instanceId, this.httpOptions);
+    }
+
+    public getRGSegmentedFiles(instanceId: any) {
+        debugger;
+        return this.httpClient.get<any>(`${environment.apiUrl}/Dicom/GetRGSegmentsByInstanceId/` + instanceId, this.httpOptions);
     }
 
     public segmentFiles(model: any) {
@@ -33,7 +44,10 @@ export class SegmentsService {
         var url = `${environment.apiUrl}/Segments`;
         var result = this.httpClient.post(url, {
             InstanceId: model.InstanceId,
-            Segment: model.Segment
+            Segment: model.Segment,
+            IsThreshold: model.IsThreshold,
+            IsKMeans: model.IsKMeans,
+            IsRegionGrowth: model.IsRegionGrowth
         });
         return result;
     }

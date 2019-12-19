@@ -61,13 +61,16 @@ export class RgsegmentsComponent implements OnInit {
       this.inputSegmentVal = params['segmentsVal'];
       let inputModel = {
         InstanceId: this.inputParam,
-        Segment: this.inputSegmentVal
+        Segment: this.inputSegmentVal,
+        IsThreshold : false,
+        IsKMeans:false,
+        IsRegionGrowth:true
       }
       if (this.inputParam) {
         this.segmentsSVC.segmentFiles(inputModel).subscribe(segmentResp => {
           debugger;
           if (segmentResp) {
-            this.segmentsSVC.getSegmentedFiles(this.inputParam).subscribe(data => {
+            this.segmentsSVC.getRGSegmentedFiles(this.inputParam).subscribe(data => {
               this.selectedSegmentImg = data.segments.length > 0 ? 1 : 0;
               this.segmentsTotlaCount = data.segments.length;
               this.imageSegment = data;

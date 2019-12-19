@@ -10,10 +10,11 @@ import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SegmentsComponent } from './segments/segments.component';
 import { RgsegmentsComponent } from './rgsegments/rgsegments.component';
+import { KmsegmentsComponent } from './kmsegments/kmsegments.component';
 
 
 @NgModule({
-  declarations: [ImageComponent, SegmentsComponent, RgsegmentsComponent],
+  declarations: [ImageComponent, SegmentsComponent, RgsegmentsComponent, KmsegmentsComponent],
   imports: [
     CommonModule,
     ViewersRoutingModule,
