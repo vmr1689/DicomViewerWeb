@@ -196,7 +196,7 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu thumbnails" data-widget="tree">
-                <li class="treeview">
+                <li class="treeview menu-open">
                     <a href="">
                         <span class="txt_menu">{{imageStudy.patientName}}</span>
                         <small class="txt_menu" style="display:block" *ngIf="imageStudy.studyDate">Study Date :
@@ -205,7 +205,7 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
-                    <ul class="treeview-menu" *ngFor="let series of imageStudy.series; let i = index">
+                    <ul class="treeview-menu" style="display: block;" *ngFor="let series of imageStudy.series; let i = index">
                         <span class="sub_txt">
                             <small><i
                                     class="fa fa-folder-open"></i>{{selectedInstanceImg}}/{{series.instancesCount}}</small>
@@ -213,7 +213,7 @@
                         </span>
                         <li>
                             <ul class="users-list clearfix">
-                                <li class="active_sub"
+                                <li [ngClass]="{'active_sub': selectedItem === instancesModel.instanceId}"
                                     *ngFor="let instancesModel of series.instancesModel; let j = index">
                                     <img src="{{instancesModel.instancePreview}}" alt="User Image"
                                         (click)="renderImage(instancesModel.instanceId,j,series.instancesCount)">
@@ -283,15 +283,15 @@
                             <ul class="dropdown-menu" style="text-align: center;margin-left:45px;width: 200px;border-radius: 15px;">
                                 <li>
                                     <a href="" data-toggle="modal" data-target="#thresholdSegmentModal">
-                                        <i class="fa fa-th-large" aria-hidden="true"></i><br>Threshold
+                                        <i class="fa fa-th-large" aria-hidden="true"></i><br>Boundary-Based
                                     </a>
                                 </li>
                                 <li>
                                     <a href="" data-toggle="modal" data-target="#kmeansSegmentModal" >
-                                        <i class="fa fa-windows" aria-hidden="true"></i><br>K-means
+                                        <i class="fa fa-windows" aria-hidden="true"></i><br>Color-Based
                                     </a>
                                 </li>
-                                <li>
+                                <li style="display: none;">
                                     <a target=”_blank” [routerLink]="['/rgsegments']"
                                         [queryParams]="{ instanceId: selectedinstanceId}">
                                         <i class="fa fa-th" aria-hidden="true"></i><br>Region Growth
@@ -453,7 +453,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title" style="text-align: center;">
-                        <font color="#367fa9">Threshold Segment</font>
+                        <font color="#367fa9">Boundary-Based Segment</font>
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -462,7 +462,7 @@
                             <span style="color: black;">Enter Segment value:</span>
                             <!-- <input type="text" class="form-control" style="width: 70%;margin-left: 160px;margin-top: -30px;" name="segments" ngModel #segments="ngModel"> -->
                             <div class="input-group">
-                                <input type="number" min="2" max="6" value="2" class="form-control"
+                                <input type="number" min="2" max="8" value="2" class="form-control"
                                     style="text-align:center;width: 100%;margin-left: 160px;margin-top: -30px;"
                                     name="thSegments" ngModel #thSegments="ngModel">
                             </div>
@@ -489,22 +489,20 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title" style="text-align: center;">
-                        <font color="#367fa9">K-means Segment</font>
+                        <font color="#367fa9">Color-Based Segment</font>
                     </h4>
                 </div>
                 <div class="modal-body">
                     <form #kmeansSegmentForm="ngForm">
                         <div class="form-group">
                             <span style="color: black;">Enter Segment value:</span>
-                            <!-- <input type="text" class="form-control" style="width: 70%;margin-left: 160px;margin-top: -30px;" name="segments" ngModel #segments="ngModel"> -->
                             <div class="input-group">
-                                <input type="number" min="2" max="6" value="2" class="form-control"
+                                <input type="number" min="2" max="8" value="2" class="form-control"
                                     style="text-align:center;width: 100%;margin-left: 160px;margin-top: -30px;"
                                     name="kmSegments" ngModel #kmSegments="ngModel">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <!-- <button type="submit" class="btn btn-info">Submit</button> -->
                             <a class="btn btn-primary" target=”_blank” [routerLink]="['/kmsegments']"
                                 [queryParams]="{ instanceId: selectedinstanceId,segmentsVal: kmSegments.value}">
                                 Submit

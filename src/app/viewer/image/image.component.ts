@@ -40,6 +40,7 @@ export class ImageComponent implements OnInit {
   subjecttext : string;
   messagetext = "Request you to comment on the study images";
   @ViewChild('fullScreen', { static: false }) divRef;
+  selectedItem: any;
   constructor(
     private patientsSvc: PatientsService,
     private emailSvc: EmailService,
@@ -99,6 +100,7 @@ export class ImageComponent implements OnInit {
 
   renderImage(instanceId: any, selectedInstanceImg: any, instancesCount: any) {
     debugger;
+    this.selectedItem = instanceId;
     cornerstone.reset(document.getElementById('dicomImage'));
 
     this.selectedInstanceImg = selectedInstanceImg + 1;
@@ -150,7 +152,7 @@ export class ImageComponent implements OnInit {
     //diacomImageElement.style.width = '1720px';
     //diacomImageElement.style.height = '350px';
     //diacomImageElement.style.marginLeft = '500px';
-
+    this.selectedItem = this.selectedinstanceId;
     this.patientsSvc.GetInstancePreviewById(this.selectedinstanceId).subscribe((data: any) => {
       const aa = 'wadouri:' + data.path;
       cornerstone.loadImage(aa).then(function (image) {

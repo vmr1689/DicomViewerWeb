@@ -27,6 +27,7 @@ export class KmsegmentsComponent implements OnInit {
 
   state: string = 'default';
   @ViewChild('fullScreen', { static: false }) divRef;
+  selectedItem: any;
 
   constructor(
     private segmentsSVC: SegmentsService,
@@ -112,14 +113,16 @@ export class KmsegmentsComponent implements OnInit {
     }
     cornerstoneTools.addTool(cornerstoneTools.TextMarkerTool, { configuration });
     itemsProcessed++;
+    this.selectedItem = this.imageSegment['segments'][0].name;
+
     that.loadSegmentedImages(this.imageSegment['segments'][0].url);
 
   }
 
-  renderImage(segmentImageURL : any) {
+  renderImage(segmentImageURL : any,imgName:any) {
     debugger;
     //cornerstone.reset(document.getElementById('dicomImage'));
-    
+    this.selectedItem = imgName;
     this.spinnerService.show();
     
       this.loadSegmentedImages(segmentImageURL);

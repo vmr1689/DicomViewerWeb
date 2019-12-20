@@ -180,7 +180,7 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu thumbnails" data-widget="tree">
-                <li class="treeview">
+                <li class="treeview menu-open">
                     <a href="">
                         <span class="txt_menu">{{imageSegment.patientName}}</span>
                         <small class="txt_menu" style="display:block" *ngIf="imageSegment.instanceCreationDate">Instance Creation Date :
@@ -189,7 +189,7 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu" style="display: block;">
                         <span class="sub_txt">
                             <small><i
                                     class="fa fa-folder-open"></i>{{selectedSegmentImg}}/{{segmentsTotlaCount}}</small>
@@ -197,10 +197,10 @@
                         </span>
                         <li>
                             <ul class="users-list clearfix">
-                                <li class="active_sub"
+                                <li [ngClass]="{'active_sub': selectedItem === segment.name}"
                                     *ngFor="let segment of imageSegment.segments; let j = index">
                                     <img src="{{segment.url}}" alt="User Image"
-                                    (click)="renderImage(segment.url)">
+                                    (click)="renderImage(segment.url,segment.name)">
                                     <span class="users-list-date">{{j+1}}</span>
                                 </li>
                             </ul>
